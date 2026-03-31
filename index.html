@@ -761,6 +761,83 @@
 </head>
 <body>
 
+<!-- ═══ PASSWORD GATE ═══ -->
+<div id="authGate" style="position:fixed; inset:0; z-index:99999; background:#0A1628; display:flex; align-items:center; justify-content:center;">
+  <!-- Subtle topo grid overlay -->
+  <div style="position:absolute; inset:0; opacity:0.03; background-image:
+    linear-gradient(rgba(0,212,200,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,200,0.3) 1px, transparent 1px);
+    background-size: 60px 60px;"></div>
+
+  <div style="position:relative; z-index:2; text-align:center; max-width:420px; width:90%; padding:48px 40px; background:rgba(13,31,60,0.6); border:1px solid #1E3056; border-radius:12px;">
+
+    <!-- Logo mark -->
+    <div style="margin-bottom:28px;">
+      <div style="display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border:2px solid #00D4C8; border-radius:12px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4C8" stroke-width="2" stroke-linecap="round">
+          <path d="M12 2L12 22M2 12L22 12M5 5L19 19M19 5L5 19"/>
+        </svg>
+      </div>
+    </div>
+
+    <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:#00D4C8; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px;">SmartAuger Technologies</div>
+    <div style="font-family:'Inter',sans-serif; font-size:24px; font-weight:700; color:#F0F4FF; margin-bottom:6px;">Confidential Investor Materials</div>
+    <div style="font-family:'Inter',sans-serif; font-size:13px; color:#8899BB; margin-bottom:36px;">Enter the password provided to you to continue.</div>
+
+    <!-- Password label -->
+    <div style="text-align:left; margin-bottom:8px;">
+      <label style="font-family:'Inter',sans-serif; font-size:12px; font-weight:500; color:#8899BB; letter-spacing:0.5px;">PASSWORD</label>
+    </div>
+    <input id="authInput" type="password" placeholder="Enter password" autocomplete="off"
+      style="width:100%; padding:14px 18px; background:#0A1628; border:1px solid #1E3056; border-radius:8px; color:#F0F4FF; font-family:'Inter',sans-serif; font-size:16px; outline:none; transition:border-color 0.3s;"
+      onfocus="this.style.borderColor='#00D4C8'" onblur="this.style.borderColor='#1E3056'"
+      onkeydown="if(event.key==='Enter')checkAuth()">
+    <div id="authError" style="font-family:'Inter',sans-serif; font-size:13px; color:#FF4757; margin-top:10px; height:18px; opacity:0; transition:opacity 0.3s;">Incorrect password. Please try again.</div>
+
+    <button onclick="checkAuth()"
+      style="margin-top:16px; width:100%; padding:14px; background:#00D4C8; border:none; border-radius:8px; color:#0A1628; font-family:'Inter',sans-serif; font-size:14px; font-weight:700; cursor:pointer; letter-spacing:0.5px; text-transform:uppercase; transition:all 0.2s;"
+      onmouseover="this.style.background='#00E8DA'; this.style.transform='translateY(-1px)'"
+      onmouseout="this.style.background='#00D4C8'; this.style.transform='translateY(0)'">Continue</button>
+
+    <div style="width:48px; height:1px; background:#1E3056; margin:28px auto 16px;"></div>
+    <div style="font-family:'Inter',sans-serif; font-size:11px; color:#4A5A78; line-height:1.5;">This document contains proprietary information.<br>Unauthorized distribution is prohibited.</div>
+  </div>
+</div>
+<script>
+async function sha256(msg) {
+  var enc = new TextEncoder().encode(msg);
+  var buf = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+}
+var validHashes = [];
+(function(){
+  var _a = [97,117,116,111,109,97,116,105,111,110,49,50,51];
+  var p=''; _a.forEach(function(c){p+=String.fromCharCode(c)});
+  sha256(p).then(function(h){validHashes=[h];});
+})();
+async function checkAuth() {
+  var input = document.getElementById('authInput').value;
+  var hash = await sha256(input);
+  if (validHashes.indexOf(hash) !== -1) {
+    document.getElementById('authGate').style.opacity = '0';
+    document.getElementById('authGate').style.transition = 'opacity 0.5s';
+    setTimeout(function() { document.getElementById('authGate').style.display = 'none'; }, 500);
+    sessionStorage.setItem('sa_auth', '1');
+  } else {
+    document.getElementById('authError').style.opacity = '1';
+    document.getElementById('authInput').style.borderColor = '#FF4757';
+    document.getElementById('authInput').value = '';
+    setTimeout(function() {
+      document.getElementById('authError').style.opacity = '0';
+      document.getElementById('authInput').style.borderColor = '#1E3056';
+    }, 2000);
+  }
+}
+if (sessionStorage.getItem('sa_auth') === '1') {
+  document.getElementById('authGate').style.display = 'none';
+}
+</script>
+
 <!-- Mobile blocker -->
 <div id="mobileBlocker" style="display:none; position:fixed; inset:0; z-index:9999; background:#0A1628; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px;">
   <div style="width:64px; height:64px; border:3px solid var(--cyan); border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
