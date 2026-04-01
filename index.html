@@ -4334,16 +4334,24 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 <section class="slide dark" data-slide="9" style="background:#0A1628 !important; display:flex; align-items:center; justify-content:center;">
   <div class="grid-bg" style="opacity:0.06;"></div>
 
-  <div class="slide-inner" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:0;">
+  <!-- Topo particle canvas behind logo -->
+  <canvas id="s9TopoCanvas" style="position:absolute; inset:0; width:100%; height:100%; z-index:0;"></canvas>
+
+  <div class="slide-inner" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:0; position:relative; z-index:1;">
+
+    <!-- FATHOM logo that assembles from particles -->
+    <div style="position:relative; width:600px; height:180px; margin:0 auto 32px;">
+      <canvas id="s9LogoCanvas" width="1200" height="360" style="width:600px; height:180px; display:block;"></canvas>
+    </div>
 
     <div class="build" data-delay="200" style="max-width:960px;">
       <div style="font-family:'Inter',sans-serif; font-size:42px; font-weight:800; line-height:1.15; color:#00D4C8;">
-        We are building the operating system<br>for subsurface data.
+        The operating system for subsurface data.
       </div>
     </div>
 
-    <div class="build" data-delay="500" style="max-width:800px; margin-top:28px;">
-      <div style="font-size:20px; font-weight:400; color:#F0F4FF; line-height:1.5;">
+    <div class="build" data-delay="500" style="max-width:960px; margin-top:28px;">
+      <div style="font-size:20px; font-weight:400; color:#F0F4FF; line-height:1.5; white-space:nowrap;">
         The platform every sensor plugs into, in every domain that depends on what lies beneath.
       </div>
     </div>
@@ -4371,7 +4379,191 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     </div>
 
   </div>
+
+  <script>
+  (function(){
+    // ── Topo background particles ──
+    var bgCanvas = document.getElementById('s9TopoCanvas');
+    var bgCtx = bgCanvas.getContext('2d');
+    var W, H, dpr;
+    var bgParticles = [];
+    var NUM_BG = 800;
+
+    function resizeBg() {
+      dpr = window.devicePixelRatio || 1;
+      var sec = bgCanvas.closest('[data-slide="9"]');
+      W = sec.offsetWidth; H = sec.offsetHeight;
+      bgCanvas.width = W * dpr; bgCanvas.height = H * dpr;
+      bgCanvas.style.width = W + 'px'; bgCanvas.style.height = H + 'px';
+      bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function initBgParticles() {
+      bgParticles = [];
+      for (var i = 0; i < NUM_BG; i++) {
+        bgParticles.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: 1 + Math.random() * 2,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.2,
+          phase: Math.random() * Math.PI * 2,
+          alpha: 0.05 + Math.random() * 0.15
+        });
+      }
+    }
+
+    // ── Logo particle animation ──
+    var logoCanvas = document.getElementById('s9LogoCanvas');
+    var logoCtx = logoCanvas.getContext('2d');
+    var logoParticles = [];
+    var logoImg = new Image();
+    var logoReady = false;
+    var startTime = 0;
+    var ASSEMBLE_DURATION = 2.5;
+
+    logoImg.onload = function() {
+      logoReady = true;
+      sampleLogo();
+    };
+    logoImg.src = 'fathomnew.png';
+
+    function sampleLogo() {
+      var tmpCanvas = document.createElement('canvas');
+      var cw = 1200, ch = 360;
+      tmpCanvas.width = cw; tmpCanvas.height = ch;
+      var tmpCtx = tmpCanvas.getContext('2d');
+      var scale = Math.min(cw / logoImg.width, ch / logoImg.height) * 0.85;
+      var dw = logoImg.width * scale, dh = logoImg.height * scale;
+      tmpCtx.drawImage(logoImg, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+      var imgData = tmpCtx.getImageData(0, 0, cw, ch);
+      var data = imgData.data;
+
+      logoParticles = [];
+      var step = 3;
+      for (var y = 0; y < ch; y += step) {
+        for (var x = 0; x < cw; x += step) {
+          var idx = (y * cw + x) * 4;
+          var a = data[idx + 3];
+          if (a > 40) {
+            var r = data[idx], g = data[idx+1], b = data[idx+2];
+            var tx = x / 2, ty = y / 2;
+            var angle = Math.random() * Math.PI * 2;
+            var dist = 200 + Math.random() * 400;
+            logoParticles.push({
+              tx: tx, ty: ty,
+              x: tx + Math.cos(angle) * dist,
+              y: ty + Math.sin(angle) * dist,
+              r: r, g: g, b: b, a: a / 255,
+              size: 1.5 + Math.random() * 1.5,
+              delay: Math.random() * 0.6
+            });
+          }
+        }
+      }
+    }
+
+    var running = false;
+    var time = 0;
+
+    function draw() {
+      if (!running) return;
+      time += 0.016;
+
+      // ── Background topo particles ──
+      bgCtx.clearRect(0, 0, W, H);
+      for (var i = 0; i < bgParticles.length; i++) {
+        var p = bgParticles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -10) p.x = W + 10;
+        if (p.x > W + 10) p.x = -10;
+        if (p.y < -10) p.y = H + 10;
+        if (p.y > H + 10) p.y = -10;
+
+        var band = Math.sin(p.y * 0.02 + p.x * 0.005 + time * 0.5);
+        var contour = Math.pow(Math.abs(band), 8);
+        var alpha = p.alpha + contour * 0.25;
+        alpha *= 0.7 + 0.3 * Math.sin(time * 2 + p.phase);
+
+        bgCtx.beginPath();
+        bgCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        bgCtx.fillStyle = 'rgba(0,212,200,' + alpha.toFixed(3) + ')';
+        bgCtx.fill();
+      }
+
+      // ── Logo particles ──
+      logoCtx.clearRect(0, 0, 1200, 360);
+      if (logoReady && logoParticles.length > 0) {
+        var elapsed = time - startTime;
+        for (var j = 0; j < logoParticles.length; j++) {
+          var lp = logoParticles[j];
+          var t = Math.max(0, Math.min(1, (elapsed - lp.delay) / ASSEMBLE_DURATION));
+          var ease = 1 - Math.pow(1 - t, 3);
+
+          var cx = lp.x + (lp.tx - lp.x) * ease;
+          var cy = lp.y + (lp.ty - lp.y) * ease;
+
+          if (t >= 1) {
+            cx = lp.tx + Math.sin(time * 1.5 + lp.tx * 0.05) * 0.5;
+            cy = lp.ty + Math.cos(time * 1.2 + lp.ty * 0.08) * 0.5;
+          }
+
+          var alpha = lp.a * ease;
+          var cr, cg, cb;
+          if (t < 0.8) {
+            cr = Math.round(0 + lp.r * (t / 0.8));
+            cg = Math.round(212 + (lp.g - 212) * (t / 0.8));
+            cb = Math.round(200 + (lp.b - 200) * (t / 0.8));
+          } else {
+            cr = lp.r; cg = lp.g; cb = lp.b;
+          }
+
+          logoCtx.beginPath();
+          logoCtx.arc(cx * 2, cy * 2, lp.size * (0.5 + ease * 0.5) * 2, 0, Math.PI * 2);
+          logoCtx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + alpha.toFixed(3) + ')';
+          logoCtx.fill();
+        }
+
+        // Fade in actual logo after assembly
+        if (elapsed > ASSEMBLE_DURATION + 0.5) {
+          var imgAlpha = Math.min(1, (elapsed - ASSEMBLE_DURATION - 0.5) / 1.0);
+          logoCtx.globalAlpha = imgAlpha;
+          var sc = Math.min(1200 / logoImg.width, 360 / logoImg.height) * 0.85;
+          var dw2 = logoImg.width * sc, dh2 = logoImg.height * sc;
+          logoCtx.drawImage(logoImg, (1200 - dw2) / 2, (360 - dh2) / 2, dw2, dh2);
+          logoCtx.globalAlpha = 1;
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    function checkActive() {
+      var sec = document.querySelector('[data-slide="9"]');
+      if (!sec) return;
+      var isActive = sec.classList.contains('active');
+      if (isActive && !running) {
+        running = true;
+        resizeBg();
+        initBgParticles();
+        startTime = time;
+        draw();
+      } else if (!isActive && running) {
+        running = false;
+      }
+    }
+
+    var sec9 = document.querySelector('[data-slide="9"]');
+    if (sec9) {
+      var obs = new MutationObserver(checkActive);
+      obs.observe(sec9, { attributes: true, attributeFilter: ['class'] });
+      checkActive();
+    }
+    window.addEventListener('resize', function() { if (running) { resizeBg(); initBgParticles(); } });
+  })();
+  </script>
 </section>
+
 
 <section class="REMOVED_PLACEHOLDER" style="display:none!important">
   <div class="slide-inner">
