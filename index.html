@@ -4334,13 +4334,16 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 <section class="slide dark" data-slide="9" style="background:#0A1628 !important; display:flex; align-items:center; justify-content:center;">
   <div class="grid-bg" style="opacity:0.06;"></div>
 
-  <!-- Full-slide WebGL canvas for topo bg + logo particles -->
-  <canvas id="s9GLCanvas" style="position:absolute; inset:0; width:100%; height:100%; z-index:0;"></canvas>
+  <!-- Subtle topo bg particles -->
+  <canvas id="s9BgCanvas" style="position:absolute; inset:0; width:100%; height:100%; z-index:0;"></canvas>
 
   <div class="slide-inner" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:0; position:relative; z-index:1;">
 
-    <!-- Spacer for where the logo renders (particles draw on the GL canvas behind) -->
-    <div style="height:180px; margin-bottom:32px;"></div>
+    <!-- Logo: particle canvas + real image layered, fixed size, well above text -->
+    <div id="s9LogoWrap" style="position:relative; width:520px; height:140px; margin:0 auto 48px; flex-shrink:0;">
+      <canvas id="s9LogoCanvas" style="position:absolute; inset:-60px -120px; width:calc(100% + 240px); height:calc(100% + 120px); pointer-events:none;"></canvas>
+      <img id="s9LogoImg" src="fathomnew.png" alt="FATHOM" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; pointer-events:none;">
+    </div>
 
     <div class="build" data-delay="200" style="max-width:960px;">
       <div style="font-family:'Inter',sans-serif; font-size:42px; font-weight:800; line-height:1.15; color:#00D4C8;">
@@ -4380,248 +4383,192 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
   <script>
   (function(){
-    var canvas = document.getElementById('s9GLCanvas');
-    var gl = canvas.getContext('webgl', { alpha: false, antialias: true, premultipliedAlpha: false });
-    if (!gl) return;
+    // ── Background topo particles ──
+    var bgC = document.getElementById('s9BgCanvas');
+    var bgCtx = bgC.getContext('2d');
+    var W = 0, H = 0, dpr = 1;
+    var bgPts = [];
 
-    // ── Shaders ──
-    var VS = [
-      'attribute vec2 aTarget;',    // target position in NDC
-      'attribute vec2 aOrigin;',    // scatter origin in NDC
-      'attribute float aDelay;',    // stagger delay 0-1
-      'attribute float aAlpha;',    // sampled alpha
-      'attribute vec3 aColor;',     // sampled color
-      'attribute float aIsBg;',     // 1.0 = background particle, 0.0 = logo particle
-      '',
-      'uniform float uTime;',
-      'uniform float uDPR;',
-      'uniform float uProgress;',   // 0 = scattered, 1 = assembled
-      '',
-      'varying float vAlpha;',
-      'varying vec3 vColor;',
-      '',
-      'void main() {',
-      '  if (aIsBg > 0.5) {',
-      '    // Background topo particle',
-      '    vec2 pos = aTarget;',
-      '    pos.x += sin(uTime * 0.3 + aDelay * 40.0) * 0.002;',
-      '    pos.y += cos(uTime * 0.25 + aDelay * 30.0) * 0.0015;',
-      '',
-      '    // Contour banding',
-      '    float band = sin(pos.y * 25.0 + pos.x * 8.0 + uTime * 0.5);',
-      '    float contour = pow(abs(band), 6.0);',
-      '    float alpha = aAlpha + contour * 0.3;',
-      '    alpha *= 0.7 + 0.3 * sin(uTime * 2.0 + aDelay * 50.0);',
-      '',
-      '    gl_Position = vec4(pos, 0.0, 1.0);',
-      '    gl_PointSize = uDPR * (1.5 + contour * 2.0);',
-      '    vAlpha = alpha;',
-      '    vColor = vec3(0.0, 0.831, 0.784);',
-      '  } else {',
-      '    // Logo particle',
-      '    float t = clamp((uProgress - aDelay * 0.4) / 0.6, 0.0, 1.0);',
-      '    float ease = 1.0 - pow(1.0 - t, 3.0);',
-      '',
-      '    vec2 pos = mix(aOrigin, aTarget, ease);',
-      '',
-      '    // Post-assembly breathing',
-      '    if (t >= 1.0) {',
-      '      pos.x += sin(uTime * 1.5 + aTarget.x * 20.0) * 0.0008;',
-      '      pos.y += cos(uTime * 1.2 + aTarget.y * 25.0) * 0.0008;',
-      '    }',
-      '',
-      '    gl_Position = vec4(pos, 0.0, 1.0);',
-      '    gl_PointSize = uDPR * (1.0 + ease * 1.2);',
-      '',
-      '    // Start cyan, transition to actual color',
-      '    float colorT = smoothstep(0.4, 0.9, t);',
-      '    vec3 cyan = vec3(0.0, 0.831, 0.784);',
-      '    vColor = mix(cyan, aColor, colorT);',
-      '    vAlpha = aAlpha * ease;',
-      '  }',
-      '}'
-    ].join('\n');
-
-    var FS = [
-      'precision mediump float;',
-      'varying float vAlpha;',
-      'varying vec3 vColor;',
-      'void main() {',
-      '  vec2 uv = gl_PointCoord - 0.5;',
-      '  float d = length(uv);',
-      '  float circle = 1.0 - smoothstep(0.0, 0.5, d);',
-      '  float alpha = circle * vAlpha;',
-      '  if (alpha < 0.003) discard;',
-      '  gl_FragColor = vec4(vColor * alpha, alpha);',
-      '}'
-    ].join('\n');
-
-    function makeShader(src, type) {
-      var s = gl.createShader(type);
-      gl.shaderSource(s, src);
-      gl.compileShader(s);
-      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-        console.error('S9 shader:', gl.getShaderInfoLog(s));
-        return null;
-      }
-      return s;
+    function resizeBg() {
+      dpr = window.devicePixelRatio || 1;
+      var sec = bgC.closest('[data-slide="9"]');
+      W = sec.offsetWidth; H = sec.offsetHeight;
+      bgC.width = W * dpr; bgC.height = H * dpr;
+      bgC.style.width = W + 'px'; bgC.style.height = H + 'px';
+      bgCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    var vs = makeShader(VS, gl.VERTEX_SHADER);
-    var fs = makeShader(FS, gl.FRAGMENT_SHADER);
-    if (!vs || !fs) return;
-    var prog = gl.createProgram();
-    gl.attachShader(prog, vs);
-    gl.attachShader(prog, fs);
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-    gl.useProgram(prog);
+    function initBg() {
+      bgPts = [];
+      for (var i = 0; i < 1000; i++) {
+        bgPts.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: 0.8 + Math.random() * 1.2,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: (Math.random() - 0.5) * 0.12,
+          ph: Math.random() * 6.28,
+          a: 0.03 + Math.random() * 0.08
+        });
+      }
+    }
 
-    var uTime = gl.getUniformLocation(prog, 'uTime');
-    var uDPR = gl.getUniformLocation(prog, 'uDPR');
-    var uProgress = gl.getUniformLocation(prog, 'uProgress');
-
-    // ── Build particle data ──
-    var NUM_BG = 2000;
-    var logoParticles = [];
-    var allData = null;
-    var totalCount = 0;
+    // ── Logo particle sweep ──
+    var logoC = document.getElementById('s9LogoCanvas');
+    var logoCtx = logoC.getContext('2d');
+    var logoImgEl = document.getElementById('s9LogoImg');
+    var particles = [];
     var logoImg = new Image();
-    var ready = false;
+    var sampled = false;
 
-    function buildBgParticles() {
-      var arr = [];
-      for (var i = 0; i < NUM_BG; i++) {
-        var x = (Math.random() * 2 - 1);
-        var y = (Math.random() * 2 - 1);
-        // aTarget(2) + aOrigin(2) + aDelay(1) + aAlpha(1) + aColor(3) + aIsBg(1) = 10 floats
-        arr.push(
-          x, y,           // target
-          x, y,           // origin (same)
-          Math.random(),  // delay/phase
-          0.06 + Math.random() * 0.14, // alpha
-          0, 0.831, 0.784, // color (cyan)
-          1.0             // isBg
-        );
-      }
-      return arr;
-    }
+    // Timing
+    var SWEEP = 2.0;   // seconds for dots to converge
+    var HOLD = 0.25;   // brief hold as dense dots
+    var FADE = 0.4;    // crossfade to real image
 
-    function sampleLogo() {
-      var tmpCanvas = document.createElement('canvas');
-      var cw = 1920, ch = 540;
-      tmpCanvas.width = cw; tmpCanvas.height = ch;
-      var tmpCtx = tmpCanvas.getContext('2d');
-      var scale = Math.min(cw / logoImg.width, ch / logoImg.height) * 0.9;
-      var dw = logoImg.width * scale, dh = logoImg.height * scale;
-      tmpCtx.drawImage(logoImg, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
-      var imgData = tmpCtx.getImageData(0, 0, cw, ch);
-      var data = imgData.data;
+    // Logo canvas dimensions (includes overflow for incoming particles)
+    var LCW = 760, LCH = 260; // canvas covers 520+240 x 140+120
+    var LOGO_OX = 120, LOGO_OY = 60; // offset of logo area within canvas
 
-      var logoArr = [];
-      // Fine sampling for high-res look
-      var step = 2;
-      for (var y = 0; y < ch; y += step) {
-        for (var x = 0; x < cw; x += step) {
-          var idx = (y * cw + x) * 4;
-          var a = data[idx + 3];
-          if (a > 30) {
-            var r = data[idx] / 255, g = data[idx+1] / 255, b = data[idx+2] / 255;
-            // Map to NDC: x -> [-0.5, 0.5], y -> centered in upper portion of screen
-            var nx = (x / cw - 0.5);
-            var ny = -(y / ch - 0.5) * (ch / cw) * (1920 / 1080) + 0.28;
-
-            var angle = Math.random() * Math.PI * 2;
-            var dist = 0.3 + Math.random() * 0.8;
-            var ox = nx + Math.cos(angle) * dist;
-            var oy = ny + Math.sin(angle) * dist;
-
-            logoArr.push(
-              nx, ny,          // target
-              ox, oy,          // origin
-              Math.random(),   // delay
-              (a / 255) * 0.9, // alpha
-              r, g, b,         // color
-              0.0              // isBg = false
-            );
-          }
-        }
-      }
-
-      // Combine bg + logo
-      var bgArr = buildBgParticles();
-      var combined = new Float32Array(bgArr.length + logoArr.length);
-      combined.set(bgArr);
-      combined.set(logoArr, bgArr.length);
-      totalCount = combined.length / 10;
-
-      var buf = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.bufferData(gl.ARRAY_BUFFER, combined, gl.STATIC_DRAW);
-
-      var STRIDE = 10 * 4;
-      var aTarget = gl.getAttribLocation(prog, 'aTarget');
-      var aOrigin = gl.getAttribLocation(prog, 'aOrigin');
-      var aDelay = gl.getAttribLocation(prog, 'aDelay');
-      var aAlpha = gl.getAttribLocation(prog, 'aAlpha');
-      var aColor = gl.getAttribLocation(prog, 'aColor');
-      var aIsBg = gl.getAttribLocation(prog, 'aIsBg');
-
-      gl.enableVertexAttribArray(aTarget);
-      gl.vertexAttribPointer(aTarget, 2, gl.FLOAT, false, STRIDE, 0);
-      gl.enableVertexAttribArray(aOrigin);
-      gl.vertexAttribPointer(aOrigin, 2, gl.FLOAT, false, STRIDE, 8);
-      gl.enableVertexAttribArray(aDelay);
-      gl.vertexAttribPointer(aDelay, 1, gl.FLOAT, false, STRIDE, 16);
-      gl.enableVertexAttribArray(aAlpha);
-      gl.vertexAttribPointer(aAlpha, 1, gl.FLOAT, false, STRIDE, 20);
-      gl.enableVertexAttribArray(aColor);
-      gl.vertexAttribPointer(aColor, 3, gl.FLOAT, false, STRIDE, 24);
-      gl.enableVertexAttribArray(aIsBg);
-      gl.vertexAttribPointer(aIsBg, 1, gl.FLOAT, false, STRIDE, 36);
-
-      ready = true;
-    }
-
-    logoImg.crossOrigin = 'anonymous';
-    logoImg.onload = function() { sampleLogo(); };
+    logoImg.onload = function() { sampleLogoPixels(); };
     logoImg.src = 'fathomnew.png';
 
-    // ── Resize ──
-    var dpr;
-    function resize() {
-      dpr = window.devicePixelRatio || 1;
-      var sec = canvas.closest('[data-slide="9"]');
-      var w = sec.offsetWidth, h = sec.offsetHeight;
-      canvas.width = w * dpr; canvas.height = h * dpr;
-      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-      gl.viewport(0, 0, canvas.width, canvas.height);
+    function sampleLogoPixels() {
+      var sw = 1040, sh = 280; // sample resolution (2x display for density)
+      var tmp = document.createElement('canvas');
+      tmp.width = sw; tmp.height = sh;
+      var tc = tmp.getContext('2d');
+      var s = Math.min(sw / logoImg.width, sh / logoImg.height) * 0.92;
+      var dw = logoImg.width * s, dh = logoImg.height * s;
+      tc.drawImage(logoImg, (sw - dw) / 2, (sh - dh) / 2, dw, dh);
+      var id = tc.getImageData(0, 0, sw, sh);
+      var d = id.data;
+
+      particles = [];
+      var midX = sw / 2;
+
+      for (var y = 0; y < sh; y++) {
+        for (var x = 0; x < sw; x++) {
+          var idx = (y * sw + x) * 4;
+          if (d[idx + 3] < 50) continue;
+          // Keep ~40% of pixels for high density without killing perf
+          if (Math.random() > 0.4) continue;
+
+          var a = d[idx + 3] / 255;
+          // Target in logo-canvas coords (map sample -> 520x140 + offset)
+          var tx = LOGO_OX + (x / sw) * 520;
+          var ty = LOGO_OY + (y / sh) * 140;
+
+          // Origin: left half sweeps from left edge, right half from right edge
+          var fromLeft = (x < midX);
+          var ox, oy;
+          if (fromLeft) {
+            ox = -80 - Math.random() * 300;
+          } else {
+            ox = LCW + 80 + Math.random() * 300;
+          }
+          oy = ty + (Math.random() - 0.5) * 60;
+
+          // Delay: edges arrive first, center last (pinch inward)
+          var normDist = Math.abs(x - midX) / midX; // 1 at edges, 0 at center
+          var delay = (1 - normDist) * 0.6 + Math.random() * 0.1;
+
+          particles.push({
+            tx: tx, ty: ty,
+            ox: ox, oy: oy,
+            a: a,
+            delay: delay,
+            sz: 0.5 + Math.random() * 0.5
+          });
+        }
+      }
+      sampled = true;
     }
 
-    // ── Animation ──
-    var running = false;
-    var time = 0;
-    var assembleStart = 0;
-    var ASSEMBLE_SECS = 3.0;
+    var running = false, time = 0, startT = 0;
+
+    function resizeLogo() {
+      logoC.width = LCW * dpr;
+      logoC.height = LCH * dpr;
+      logoCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
 
     function draw() {
       if (!running) return;
       time += 0.016;
+      var elapsed = time - startT;
 
-      gl.clearColor(0.039, 0.086, 0.157, 1);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      // ── BG topo ──
+      bgCtx.clearRect(0, 0, W, H);
+      for (var i = 0; i < bgPts.length; i++) {
+        var p = bgPts[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -5) p.x = W + 5;
+        if (p.x > W + 5) p.x = -5;
+        if (p.y < -5) p.y = H + 5;
+        if (p.y > H + 5) p.y = -5;
+        var band = Math.sin(p.y * 0.015 + p.x * 0.004 + time * 0.4);
+        var contour = Math.pow(Math.abs(band), 8);
+        var al = p.a + contour * 0.15;
+        al *= 0.7 + 0.3 * Math.sin(time * 1.8 + p.ph);
+        bgCtx.beginPath();
+        bgCtx.arc(p.x, p.y, p.r, 0, 6.28);
+        bgCtx.fillStyle = 'rgba(0,212,200,' + al.toFixed(3) + ')';
+        bgCtx.fill();
+      }
 
-      if (ready && totalCount > 0) {
-        var elapsed = time - assembleStart;
-        var progress = Math.min(1.0, elapsed / ASSEMBLE_SECS);
+      // ── Logo particles ──
+      if (!sampled || particles.length === 0) {
+        requestAnimationFrame(draw);
+        return;
+      }
 
-        gl.uniform1f(uTime, time);
-        gl.uniform1f(uDPR, dpr);
-        gl.uniform1f(uProgress, progress);
+      logoCtx.clearRect(0, 0, LCW, LCH);
 
-        gl.drawArrays(gl.POINTS, 0, totalCount);
+      var sweepProgress = Math.min(1, elapsed / SWEEP);
+      var fadeStart = SWEEP + HOLD;
+      var imgAlpha = 0;
+      var dotAlpha = 1;
+
+      if (elapsed > fadeStart) {
+        imgAlpha = Math.min(1, (elapsed - fadeStart) / FADE);
+        dotAlpha = 1 - imgAlpha;
+      }
+
+      // Draw dot cloud
+      if (dotAlpha > 0.005) {
+        for (var j = 0; j < particles.length; j++) {
+          var pt = particles[j];
+          // Per-particle progress accounting for stagger
+          var t = Math.max(0, Math.min(1, (sweepProgress - pt.delay * 0.5) / 0.5));
+          // Quartic ease-out for smooth decel
+          var e = 1 - Math.pow(1 - t, 4);
+
+          var cx = pt.ox + (pt.tx - pt.ox) * e;
+          var cy = pt.oy + (pt.ty - pt.oy) * e;
+
+          // Color: start cyan, end white
+          var cMix = Math.max(0, Math.min(1, (t - 0.3) / 0.7));
+          var cMix2 = cMix * cMix; // ease into white
+          var cr = Math.round(0 + 255 * cMix2);
+          var cg = Math.round(212 + (255 - 212) * cMix2);
+          var cb = Math.round(200 + (255 - 200) * cMix2);
+
+          var alpha = pt.a * e * dotAlpha;
+          if (alpha < 0.004) continue;
+
+          logoCtx.beginPath();
+          logoCtx.arc(cx, cy, pt.sz * (0.3 + e * 0.7), 0, 6.28);
+          logoCtx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + alpha.toFixed(3) + ')';
+          logoCtx.fill();
+        }
+      }
+
+      // Crossfade to the real logo image (crisp, white, perfect)
+      logoImgEl.style.opacity = imgAlpha;
+
+      // Once fully revealed, stop drawing dots
+      if (imgAlpha >= 1) {
+        logoCtx.clearRect(0, 0, LCW, LCH);
       }
 
       requestAnimationFrame(draw);
@@ -4630,29 +4577,26 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     function checkActive() {
       var sec = document.querySelector('[data-slide="9"]');
       if (!sec) return;
-      var isActive = sec.classList.contains('active');
-      if (isActive && !running) {
+      if (sec.classList.contains('active') && !running) {
         running = true;
-        resize();
-        assembleStart = time;
+        logoImgEl.style.opacity = '0';
+        resizeBg(); initBg(); resizeLogo();
+        startT = time;
         draw();
-      } else if (!isActive && running) {
+      } else if (!sec.classList.contains('active') && running) {
         running = false;
       }
     }
 
     var sec9 = document.querySelector('[data-slide="9"]');
     if (sec9) {
-      var obs = new MutationObserver(checkActive);
-      obs.observe(sec9, { attributes: true, attributeFilter: ['class'] });
+      new MutationObserver(checkActive).observe(sec9, { attributes: true, attributeFilter: ['class'] });
       checkActive();
     }
-    window.addEventListener('resize', function() { if (running) resize(); });
+    window.addEventListener('resize', function() { if (running) { resizeBg(); initBg(); resizeLogo(); } });
   })();
   </script>
 </section>
-
-
 
 <section class="REMOVED_PLACEHOLDER" style="display:none!important">
   <div class="slide-inner">
