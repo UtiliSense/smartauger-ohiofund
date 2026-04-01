@@ -760,6 +760,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
+<script src="topo_pts.js"></script>
 
 <!-- ═══ PASSWORD GATE ═══ -->
 <div id="authGate" style="position:fixed; inset:0; z-index:99999; background:#0A1628; display:flex; align-items:center; justify-content:center;">
@@ -829,70 +830,125 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   document.getElementById('authGate').style.display = 'none';
 }
 
-// 3D topo white dot background for auth gate
+// 3D topo white dot background for auth gate — uses real TOPO_PTS data
 (function(){
   var gate = document.getElementById('authGate');
   if (gate.style.display === 'none') return;
-  var c = document.getElementById('authTopoCanvas');
-  if (!c) return;
-  var gl = c.getContext('webgl', { alpha: false, antialias: true });
-  if (!gl) return;
 
-  // Generate simple topo grid
-  var N = 80, pts = [];
-  for (var ix = 0; ix < N; ix++) for (var iz = 0; iz < N; iz++) {
-    var x = (ix / (N-1) - 0.5) * 6;
-    var z = (iz / (N-1) - 0.5) * 6;
-    var y = Math.sin(x * 1.2) * 0.3 + Math.cos(z * 0.9) * 0.25 + Math.sin(x * 0.5 + z * 0.7) * 0.4;
-    pts.push(x, y, z);
-  }
-  var data = new Float32Array(pts);
-  var buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+  // Wait for topo_pts.js to load
+  function initAuthTopo() {
+    var pts = window.TOPO_PTS;
+    if (!pts) { setTimeout(initAuthTopo, 100); return; }
 
-  var VS = 'attribute vec3 aPos; uniform float uTime; varying float vA;\n' +
-    'void main() {\n' +
-    '  vec3 p = aPos * 2.5;\n' +
-    '  p.y += sin(aPos.x*2.0+uTime*0.5)*0.15 + cos(aPos.z*1.5-uTime*0.3)*0.1;\n' +
-    '  float bands = mod(aPos.y, 0.12); float cd = abs(bands-0.06);\n' +
-    '  float onC = clamp((0.025-cd)/0.012, 0.0, 1.0);\n' +
-    '  p.y += 2.0;\n' +
-    '  float sa=sin(-0.6), ca=cos(-0.6);\n' +
-    '  float ny=p.z*sa+p.y*ca, nz=p.z*ca-p.y*sa; p.y=ny; p.z=nz;\n' +
-    '  float fov=1.5; gl_Position=vec4(p.x/(-p.z*fov), p.y/(-p.z*fov), 0.0, 1.0);\n' +
-    '  gl_PointSize = 2.0 + onC * 1.5;\n' +
-    '  float r = clamp(1.0-length(aPos.xz)*0.28, 0.0, 1.0);\n' +
-    '  vA = (0.15 + onC*0.35) * r * (0.85+0.15*sin(uTime*2.0+aPos.x*10.0));\n' +
-    '}';
-  var FS = 'precision mediump float; varying float vA;\n' +
-    'void main() {\n' +
-    '  float d=length(gl_PointCoord-0.5); float c=1.0-smoothstep(0.0,0.5,d);\n' +
-    '  float a=c*vA; if(a<0.005) discard;\n' +
-    '  gl_FragColor=vec4(0.9,0.93,0.97, a);\n}\n';
+    var c = document.getElementById('authTopoCanvas');
+    if (!c) return;
+    var gl = c.getContext('webgl', { alpha: false, antialias: true });
+    if (!gl) return;
 
-  function mk(s,t){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return sh;}
-  var prog=gl.createProgram();
-  gl.attachShader(prog,mk(VS,gl.VERTEX_SHADER));
-  gl.attachShader(prog,mk(FS,gl.FRAGMENT_SHADER));
-  gl.linkProgram(prog); gl.useProgram(prog);
-  var aP=gl.getAttribLocation(prog,'aPos'); gl.enableVertexAttribArray(aP);
-  gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
-  var uT=gl.getUniformLocation(prog,'uTime');
-  gl.clearColor(0.039,0.086,0.157,1); gl.enable(gl.BLEND);
-  gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
-  var nP=data.length/3;
+    var data = new Float32Array(pts);
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
 
-  function draw(t){
-    if(gate.style.display==='none') return;
-    c.width=c.clientWidth*devicePixelRatio; c.height=c.clientHeight*devicePixelRatio;
-    gl.viewport(0,0,c.width,c.height);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform1f(uT,t*0.001);
-    gl.drawArrays(gl.POINTS,0,nP);
+    // Same vertex shader as page 4 but with fixed progress=0
+    var VS = [
+      'attribute vec3 aPos;',
+      'uniform mat4 uProj;',
+      'uniform mat4 uView;',
+      'uniform float uTime;',
+      'uniform float uDPR;',
+      'uniform vec2 uRes;',
+      'varying float vAlpha;',
+      'void main() {',
+      '  vec3 pos = aPos;',
+      '  float bands = mod(pos.y, 0.12);',
+      '  float contourDist = abs(bands - 0.06);',
+      '  float onContour = clamp((0.025 - contourDist) / 0.012, 0.0, 1.0);',
+      '  float wave = sin(pos.x * 2.0 + uTime * 0.8) * 0.04;',
+      '  wave += sin(pos.z * 1.5 - uTime * 0.6) * 0.03;',
+      '  wave += sin((pos.x + pos.z) * 3.0 + uTime * 1.2) * 0.015;',
+      '  pos.y += wave;',
+      '  pos *= 3.5;',
+      '  pos.y += 1.75;',
+      '  float angle = -0.75;',
+      '  float sa = sin(angle), ca = cos(angle);',
+      '  float zy = pos.z * sa + pos.y * ca;',
+      '  float zz = pos.z * ca - pos.y * sa;',
+      '  pos.y = zy; pos.z = zz;',
+      '  vec4 mvPos = uView * vec4(pos, 1.0);',
+      '  gl_Position = uProj * mvPos;',
+      '  gl_PointSize = uDPR * (2.0 + onContour * 2.0);',
+      '  vAlpha = 0.3 + onContour * 0.6;',
+      '  float radial = clamp(1.0 - length(aPos.xz) * 0.3, 0.0, 1.0);',
+      '  radial = 1.0 - (1.0 - radial) * (1.0 - radial);',
+      '  vAlpha *= radial;',
+      '  vAlpha *= 0.82 + 0.18 * sin(uTime * 3.0 + aPos.x * 15.0 + aPos.z * 10.0);',
+      '  float vf = smoothstep(-9.5, -1.0, aPos.y);',
+      '  vAlpha *= vf;',
+      '}'
+    ].join('\n');
+
+    // White dots instead of cyan
+    var FS =
+      'precision mediump float;\n' +
+      'varying float vAlpha;\n' +
+      'void main() {\n' +
+      '  vec2 uv = gl_PointCoord - 0.5;\n' +
+      '  float d = length(uv);\n' +
+      '  float circle = 1.0 - smoothstep(0.0, 0.5, d);\n' +
+      '  float alpha = circle * vAlpha;\n' +
+      '  if (alpha < 0.005) discard;\n' +
+      '  gl_FragColor = vec4(0.85, 0.88, 0.95, alpha);\n' +
+      '}\n';
+
+    function makeShader(src, type) {
+      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s;
+    }
+    var prog = gl.createProgram();
+    gl.attachShader(prog, makeShader(VS, gl.VERTEX_SHADER));
+    gl.attachShader(prog, makeShader(FS, gl.FRAGMENT_SHADER));
+    gl.linkProgram(prog); gl.useProgram(prog);
+
+    var aP = gl.getAttribLocation(prog, 'aPos');
+    gl.enableVertexAttribArray(aP);
+    gl.vertexAttribPointer(aP, 3, gl.FLOAT, false, 0, 0);
+
+    var uTime = gl.getUniformLocation(prog, 'uTime');
+    var uDPR = gl.getUniformLocation(prog, 'uDPR');
+    var uProj = gl.getUniformLocation(prog, 'uProj');
+    var uView = gl.getUniformLocation(prog, 'uView');
+    var uRes = gl.getUniformLocation(prog, 'uRes');
+    var nP = data.length / 3;
+
+    gl.clearColor(0.039, 0.086, 0.157, 1);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+
+    function perspective(fov, aspect, near, far) {
+      var f = 1.0 / Math.tan(fov / 2), nf = 1 / (near - far);
+      return new Float32Array([f/aspect,0,0,0, 0,f,0,0, 0,0,(far+near)*nf,-1, 0,0,2*far*near*nf,0]);
+    }
+    var viewMat = new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,-8,1]);
+
+    function draw(t) {
+      if (gate.style.display === 'none') return;
+      c.width = c.clientWidth * devicePixelRatio;
+      c.height = c.clientHeight * devicePixelRatio;
+      gl.viewport(0, 0, c.width, c.height);
+      var aspect = c.width / c.height;
+      var projMat = perspective(0.8, aspect, 0.1, 100.0);
+      gl.uniformMatrix4fv(uProj, false, projMat);
+      gl.uniformMatrix4fv(uView, false, viewMat);
+      gl.uniform1f(uTime, t * 0.001);
+      gl.uniform1f(uDPR, devicePixelRatio);
+      gl.uniform2f(uRes, c.width, c.height);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.POINTS, 0, nP);
+      requestAnimationFrame(draw);
+    }
     requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
+  initAuthTopo();
 })();
 </script>
 
