@@ -1421,7 +1421,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <!-- SECTION 2 — Body Copy -->
         <div class="s1-content mt-40">
           <p style="font-size:clamp(16px, 1.6vw, 20px); line-height:1.7; text-align:left; max-width:680px; color:rgba(255,255,255,0.7); font-weight:400;">
-            The world runs on sensors. GPR, LiDAR, sonar, seismic &mdash; but converting raw sensor data into actionable intelligence still takes weeks, costs a fortune, and depends on experts you can't scale.
+            The world runs on sensors. GPR, LiDAR, sonar, seismic - but converting raw sensor data into actionable intelligence still takes weeks, costs a fortune, and depends on experts you can't scale.
           </p>
         </div>
 
@@ -1480,7 +1480,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <!-- SECTION 6 — Supporting Italic Line -->
         <div class="s1-content mt-28">
           <p style="font-size:clamp(14px, 1.3vw, 17px); line-height:1.7; text-align:left; font-style:italic; max-width:680px; color:rgba(255,255,255,0.55); font-weight:400;">
-            Utility conflicts. Pipeline risk. Tunnel threats. Subsidence hazards. The sensor was never the bottleneck &mdash; the analyst always was.
+            Utility conflicts. Pipeline risk. Tunnel threats. Subsidence hazards. The sensor is never the bottleneck. The interpretation process always is.
           </p>
         </div>
 
@@ -1608,7 +1608,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <!-- SECTION 2 — Body Copy -->
         <div class="build" data-delay="500" style="margin-top:20px; max-width:600px;">
           <p style="font-size:15px; line-height:1.7; text-align:left; color:rgba(255,255,255,0.65); font-weight:400;">
-            Every industry operating underground interprets sensor data the same way: manually, slowly, and at enormous cost. FATHOM changes that &mdash; the first foundational AI platform for subsurface geophysics that autonomously ingests multi-sensor data, analyzes without human intervention, and delivers correlated intelligence as a ready-to-act output. No analyst queue. No backlog. Just answers.
+            Every industry operating underground interprets sensor data the same way: manually, slowly, and at enormous cost. FATHOM changes that - the first foundational AI platform for subsurface geophysics that autonomously ingests multi-sensor data, analyzes without human intervention, and delivers correlated intelligence as a ready-to-act output. No analyst queue. No backlog. Just answers. Right Now.
           </p>
         </div>
 
@@ -1640,12 +1640,12 @@ if (sessionStorage.getItem('sa_auth') === '1') {
               </tr>
               <tr>
                 <td style="padding:10px 10px 10px 0; font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; vertical-align:top;">FATHOM</td>
-                <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top; border-bottom:1px solid rgba(255,255,255,0.06);">You collect. FATHOM&rsquo;s ML models automatically interpret the data &mdash; conflicts, depths, and asset classifications resolved and pushed to your GIS platform.</td>
-                <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top; border-bottom:1px solid rgba(255,255,255,0.06);">You collect. FATHOM assumes the exploitation role &mdash; fusing multi-sensor inputs, classifying anomalies, and delivering formatted assessments to command.</td>
+                <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top; border-bottom:1px solid rgba(255,255,255,0.06);">You collect. FATHOM&rsquo;s ML models automatically interpret the data - conflicts, depths, and asset classifications resolved and pushed to your GIS platform.</td>
+                <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top; border-bottom:1px solid rgba(255,255,255,0.06);">You collect. FATHOM assumes the exploitation role - fusing multi-sensor inputs, classifying anomalies, and delivering formatted assessments to command.</td>
               </tr>
               <tr>
                 <td style="padding:10px 10px 10px 0; font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; vertical-align:top;">Output</td>
-                <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top;">Recurring revenue at scale: interpretation delivered as managed service, per-scan, or enterprise SaaS &mdash; margins grow with data volume, not headcount.</td>
+                <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top;">Recurring revenue at scale: interpretation delivered as managed service, per-scan, or enterprise SaaS - margins grow with data volume, not headcount.</td>
                 <td style="padding:10px 12px; font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; vertical-align:top;">Sovereign subsurface intelligence. No foreign hardware dependencies. Purpose-built for SBIR transition and DoD program of record.</td>
               </tr>
             </tbody>
@@ -1713,16 +1713,17 @@ if (sessionStorage.getItem('sa_auth') === '1') {
       transition:opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1);
     }
     [data-slide="3"] .fathom-panel.in-view .fp-inner { opacity:1; transform:translateY(0); }
-    [data-slide="3"] .fathom-scroll-cue {
-      position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
-      z-index:10; display:flex; flex-direction:column; align-items:center; gap:10px;
-      transition:opacity 0.5s;
-    }
-    [data-slide="3"] .fathom-scroll-cue.hidden { opacity:0; pointer-events:none; }
-    [data-slide="3"] .fathom-scroll-cue span { font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(0,212,200,0.45); letter-spacing:3px; text-transform:uppercase; }
-    @keyframes fathomChevron { 0%,100%{transform:translateY(0);opacity:0.3;} 50%{transform:translateY(10px);opacity:1;} }
-    [data-slide="3"] .fathom-scroll-cue svg { animation:fathomChevron 1.5s ease-in-out infinite; }
-    [data-slide="3"] .fathom-scroll-cue span { animation:fathomChevron 1.5s ease-in-out infinite; }
+    [data-slide="3"] .fathom-scroll-cue {      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);      z-index:10; display:flex; flex-direction:column; align-items:center; gap:6px;      transition:opacity 0.5s;      background:rgba(0,212,200,0.12); border:2px solid rgba(0,212,200,0.5); border-radius:16px;      padding:14px 36px 18px;      box-shadow:0 0 30px rgba(0,212,200,0.25), 0 0 60px rgba(0,212,200,0.1);    }    [data-slide="3"] .fathom-scroll-cue.hidden { opacity:0; pointer-events:none; }    [data-slide="3"] .fathom-scroll-cue span { font-family:"Inter",sans-serif; font-size:18px; font-weight:800; color:rgba(0,212,200,0.9); letter-spacing:5px; text-transform:uppercase; }    @keyframes fathomChevron { 0%,100%{transform:translateY(0);opacity:0.3;} 50%{transform:translateY(14px);opacity:1;} }    [data-slide="3"] .fathom-scroll-cue svg { animation:fathomChevron 1.5s ease-in-out infinite; }    [data-slide="3"] .fathom-scroll-cue span { animation:fathomChevron 1.5s ease-in-out infinite; }
+
+
+
+
+
+
+
+
+
+
     [data-slide="3"] .fathom-nav { position:absolute; right:28px; top:50%; transform:translateY(-50%); z-index:10; display:flex; flex-direction:column; gap:14px; }
     [data-slide="3"] .fathom-nav-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.15); cursor:pointer; transition:all 0.4s; border:none; padding:0; }
     [data-slide="3"] .fathom-nav-dot.active { background:var(--cyan); box-shadow:0 0 12px rgba(0,212,200,0.6); transform:scale(1.5); }
@@ -1749,9 +1750,9 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   </div>
 
   <div class="fathom-scroll-cue" id="fathomCue">
-    <span>Scroll</span>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 9L12 17L20 9" stroke="#00D4C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="margin-top:-12px; animation-delay:0.3s;"><path d="M4 9L12 17L20 9" stroke="rgba(0,212,200,0.3)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>SCROLL DOWN</span>
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M4 9L12 17L20 9" stroke="#00D4C8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="margin-top:-18px; animation-delay:0.3s;"><path d="M4 9L12 17L20 9" stroke="rgba(0,212,200,0.5)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
   <div class="fathom-nav" id="fathomNav">
     <button class="fathom-nav-dot active" data-fp="0"></button>
@@ -1941,7 +1942,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
           <div class="video-expand-box">
             <!-- Title bar attached to top -->
             <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:rgba(0,229,204,0.08); border-bottom:1px solid rgba(0,229,204,0.15);">
-              <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM &mdash; Ground Radar Anomaly &amp; Void Engine (GRAVE)</span>
+              <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM - Ground Radar Anomaly &amp; Void Engine (GRAVE)</span>
               <span style="font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; background:rgba(0,229,204,0.1); border:1px solid rgba(0,229,204,0.25); border-radius:4px; padding:3px 10px;">Defense</span>
             </div>
             <video id="graveDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="https://smartauger-media.s3.amazonaws.com/videos/Grave.mp4" type="video/mp4"></video>
@@ -1958,7 +1959,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
             <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:rgba(0,229,204,0.05); border-top:1px solid rgba(0,229,204,0.12);">
               <div style="display:flex; align-items:center; gap:10px;">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#00e5cc" stroke-width="1.5" fill="none"/><path d="M4 5h8M4 8h6M4 11h4" stroke="#00e5cc" stroke-width="1" stroke-linecap="round"/></svg>
-                <span style="font-family:'Inter',sans-serif; font-size:12px; font-weight:600; color:#fff; letter-spacing:0.3px;">FDTD Simulation &mdash; Al-Shifa Tunnel Complex &mdash; Modeled from verified site geology &amp; IDF-published tunnel parameters</span>
+                <span style="font-family:'Inter',sans-serif; font-size:12px; font-weight:600; color:#fff; letter-spacing:0.3px;">FDTD Simulation - Al-Shifa Tunnel Complex - Modeled from verified site geology &amp; IDF-published tunnel parameters</span>
               </div>
               <span style="font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase;">See Appendix</span>
             </div>
@@ -1971,7 +1972,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
           <div class="video-expand-box">
             <!-- Title bar attached to top -->
             <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:rgba(0,229,204,0.08); border-bottom:1px solid rgba(0,229,204,0.15);">
-              <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM &mdash; Arctic Terrain Intelligence via Multi-Sensor Unified Sensing</span>
+              <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM - Arctic Terrain Intelligence via Multi-Sensor Unified Sensing</span>
               <span style="font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; background:rgba(0,229,204,0.1); border:1px solid rgba(0,229,204,0.25); border-radius:4px; padding:3px 10px;">Defense</span>
             </div>
             <video id="artimusDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="https://smartauger-media.s3.amazonaws.com/videos/ARTIMUS.mp4" type="video/mp4"></video>
@@ -2008,7 +2009,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
           Three products. Two domains.<br><span style="color:#00a89c;">One engine.</span>
         </div>
         <p style="font-family:'Inter',sans-serif; font-size:clamp(16px, 1.5vw, 19px); line-height:1.8; color:rgba(10,22,40,0.6); text-align:justify; max-width:1000px; margin:0 auto 36px;">
-          UtiliSense maps utility corridors. GRAVE detects tunnels. ARTIMUS reads Arctic terrain. Three products, two domains &mdash; all derived from the same FATHOM engine. What would take analysts hours to days, FATHOM delivers in seconds or minutes &mdash; in commercial jobsites or austere environments. Transforming raw collected data into actionable intelligence in near real-time.
+          UtiliSense maps utility corridors. GRAVE detects tunnels. ARTIMUS reads Arctic terrain. Three products, two domains - all derived from the same FATHOM engine. What would take analysts hours to days, FATHOM delivers in seconds or minutes - in commercial jobsites or austere environments. Transforming raw collected data into actionable intelligence in near real-time.
         </p>
         <p style="font-family:'Inter',sans-serif; font-size:clamp(16px, 1.5vw, 19px); font-weight:800; color:#0A1628; text-align:center; white-space:nowrap; margin:0 auto 36px;">
           One foundational engine. Infinite verticals.
@@ -2087,7 +2088,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     <div class="fathom-panel" data-fp="3">
       <div class="fp-inner">
         <div class="fp-label">Universal Sensor Fusion</div>
-        <p class="fp-body" style="font-size:20px; color:rgba(255,255,255,0.6); margin-bottom:0;">Subsurface and above-ground sensor data &mdash; ingested, correlated, and interpreted into actionable results.</p>
+        <p class="fp-body" style="font-size:20px; color:rgba(255,255,255,0.6); margin-bottom:0;">Subsurface and above-ground sensor data - ingested, correlated, and interpreted into actionable results.</p>
         <div class="fp-pills">
           <div class="fp-pill"><i></i>Ground Penetrating Radar</div>
           <div class="fp-pill"><i></i>Seismic Refraction</div>
@@ -3321,7 +3322,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         What a trained analyst bills 30 minutes to interpret, UtiliSense just did in seconds.
       </p>
       <p style="font-size:20px; color:rgba(255,255,255,0.5); font-weight:400; margin-top:20px; line-height:1.5; white-space:nowrap;">
-        Scale that across a full day of collection &mdash; 8 hours of interpretation becomes 20 minutes.
+        Scale that across a full day of collection - 8 hours of interpretation becomes 20 minutes.
       </p>
       <p style="font-size:40px; font-weight:900; margin-top:16px; letter-spacing:-1px;" class="cyan">
         Zero Training. Intelligence in one click.
@@ -3674,7 +3675,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <div style="font-size:22px; font-weight:800; color:var(--dark-text); margin-bottom:8px;">We Built the Hardware</div>
         <div style="font-size:15px; font-weight:600; color:var(--cyan-dim); letter-spacing:1px; text-transform:uppercase; margin-bottom:14px;">Your Sensor or Ours</div>
         <p style="font-size:15px; line-height:1.7; text-align:left; color:var(--dark-muted);">
-          We've developed our own sensors from the ground up &mdash; but FATHOM works with yours too. Bring your data, or bring nothing. We've got you covered either way.
+          We've developed our own sensors from the ground up - but FATHOM works with yours too. Bring your data, or bring nothing. We've got you covered either way.
         </p>
         <!-- Micro-tags -->
         <div style="margin-top:auto; padding-top:20px; display:flex; flex-wrap:wrap; gap:6px;">
@@ -3702,7 +3703,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <div style="font-size:22px; font-weight:800; color:var(--dark-text); margin-bottom:8px;">Built for Real Problems</div>
         <div style="font-size:15px; font-weight:600; color:var(--cyan-dim); letter-spacing:1px; text-transform:uppercase; margin-bottom:14px;">Problem &rarr; Platform</div>
         <p style="font-size:15px; line-height:1.7; text-align:left; color:var(--dark-muted);">
-          We don't build tools and look for markets. We find where the pain is and build for it. GroundScope is what that looks like &mdash; see next page.
+          We don't build tools and look for markets. We find where the pain is and build for it. GroundScope is what that looks like - see next page.
         </p>
         <!-- Micro-tags -->
         <div style="margin-top:auto; padding-top:20px; display:flex; flex-wrap:wrap; gap:6px;">
@@ -3996,13 +3997,13 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   <!-- Disclaimer modal -->
   <div id="gs-disclaimer" style="position:absolute; inset:0; z-index:50; background:rgba(10,14,28,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:center; pointer-events:all;">
     <div style="max-width:700px; background:linear-gradient(135deg, rgba(20,30,50,0.95), rgba(15,22,40,0.98)); border:1px solid rgba(0,212,200,0.25); border-radius:20px; padding:48px 52px; box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,212,200,0.08); text-align:center;">
-      <div style="font-size:48px; margin-bottom:16px;">&#9888;</div>
+      <div style="font-size:48px; margin-bottom:16px;">💰</div>
       <h2 style="font-family:'Syne','Inter',sans-serif; font-size:32px; font-weight:900; color:#fff; margin:0 0 24px 0; letter-spacing:-1px;">What You're Investing In</h2>
       <p style="font-size:16px; color:rgba(255,255,255,0.75); line-height:1.7; margin:0 0 16px 0; text-align:left;">
-        The offered investment is in <strong style="color:#fff;">SmartAuger Technologies LLC</strong>, a subsidiary of SmartAuger Inc. &mdash; the R&amp;D and software engine behind the stack. Not GroundScope. Not its hardware. Not its revenue.
+        The offered investment is in <strong style="color:#fff;">SmartAuger Technologies LLC</strong>, a subsidiary of SmartAuger Inc. - the R&amp;D and software engine behind the stack. Not GroundScope. Not its hardware. Not its revenue.
       </p>
       <p style="font-size:16px; color:rgba(255,255,255,0.75); line-height:1.7; margin:0 0 16px 0; text-align:left;">
-        We're showing you GroundScope because we built its core capabilities &mdash; the software and sensor intelligence that make it work. This investment supports those same capabilities, now aimed at a larger market &mdash; construction, engineering, geophysical, geotechnical, and defense.
+        We're showing you GroundScope because we built its core capabilities - the software and sensor intelligence that make it work. This investment supports those same capabilities, now aimed at a larger market - construction, engineering, geophysical, geotechnical, and defense.
       </p>
       <p style="font-size:18px; color:var(--cyan); font-weight:700; line-height:1.6; margin:0 0 16px 0; text-align:left;">
         While GroundScope finalizes for commercialization, we're taking everything we've learned and building a foundational intelligence platform for engineering, geotechnical, and defense markets.
@@ -4013,7 +4014,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
       <button id="gs-disclaimer-btn" style="background:linear-gradient(135deg, var(--cyan), rgba(0,168,158,1)); color:#0A0E1C; font-family:'Syne','Inter',sans-serif; font-size:16px; font-weight:800; padding:14px 48px; border:none; border-radius:50px; cursor:pointer; letter-spacing:0.5px; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 4px 20px rgba(0,212,200,0.3);"
         onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 30px rgba(0,212,200,0.5)';"
         onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,212,200,0.3)';">
-        I Understand &mdash; Show Me GroundScope
+        I Understand - Show Me GroundScope
       </button>
       <button onclick="goToSlide(8)" style="background:transparent; color:rgba(255,255,255,0.35); font-family:'Syne','Inter',sans-serif; font-size:13px; font-weight:600; padding:10px 32px; border:1px solid rgba(255,255,255,0.15); border-radius:50px; cursor:pointer; letter-spacing:0.5px; transition:all 0.2s; margin-left:12px;"
         onmouseover="this.style.borderColor='rgba(255,255,255,0.3)';this.style.color='rgba(255,255,255,0.6)';"
@@ -4337,7 +4338,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
     <div class="build" data-delay="200" style="max-width:960px;">
       <div style="font-family:'Inter',sans-serif; font-size:42px; font-weight:800; line-height:1.15; color:#00D4C8;">
-        We are building the operating system<br>for subsurface intelligence.
+        We are building the operating system<br>for subsurface data.
       </div>
     </div>
 
@@ -4353,7 +4354,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
     <div class="build" data-delay="900" style="max-width:800px; margin-top:32px;">
       <div style="font-size:18px; font-weight:400; color:#F0F4FF; line-height:1.5;">
-        Decades of manual process. We are automating it.
+        We automate the data pipeline from end to end.
       </div>
     </div>
 
@@ -4365,7 +4366,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
     <div class="build" data-delay="1400" style="margin-top:48px; max-width:800px;">
       <div style="font-size:10px; font-weight:500; color:#8899BB; text-transform:uppercase; letter-spacing:3px;">
-        FATHOM &mdash; Autonomous Subsurface Intelligence
+        FATHOM - Autonomous Subsurface Intelligence
       </div>
     </div>
 
@@ -4414,7 +4415,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <span class="mono" style="font-size:12px; letter-spacing:1.5px; color:var(--light-cyan);">PILLAR 02</span>
       </div>
       <div style="font-family:'Inter',sans-serif; font-size:24px; font-weight:800; color:var(--light-cyan); margin-bottom:6px;">Adjacent Markets</div>
-      <div style="font-size:14px; font-weight:600; color:var(--muted); margin-bottom:12px;">ARTIMUS Hardware Reuse &mdash; Zero New R&amp;D</div>
+      <div style="font-size:14px; font-weight:600; color:var(--muted); margin-bottom:12px;">ARTIMUS Hardware Reuse - Zero New R&amp;D</div>
       <div class="muted" style="font-size:13px; line-height:1.7;">
         Avalanche safety, snowpack &amp; water utility,<br>
         pipeline infrastructure, arctic construction.<br>
@@ -4422,7 +4423,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
       </div>
       <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(30,48,86,0.6);">
         <div style="font-size:12px; font-weight:700; color:var(--light-cyan); letter-spacing:1px; margin-bottom:4px;">Y2 ACTIVATION</div>
-        <div class="muted" style="font-size:13px;">$192K Y2 &rarr; $900K Y3 &mdash; $1.5K&ndash;$5K/mo</div>
+        <div class="muted" style="font-size:13px;">$192K Y2 &rarr; $900K Y3 - $1.5K&ndash;$5K/mo</div>
       </div>
       <div style="margin-top:10px;">
         <div style="font-size:12px; font-weight:700; color:var(--light-cyan); letter-spacing:1px; margin-bottom:4px;">KEY INSIGHT</div>
@@ -4873,7 +4874,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
     <!-- RIGHT: Segment explorer -->
     <div class="rv-right build-right" data-delay="600">
-      <div class="mono cyan" style="font-size:11px; letter-spacing:2px; margin-bottom:8px;">REVENUE SEGMENTS &mdash; CLICK TO EXPLORE</div>
+      <div class="mono cyan" style="font-size:11px; letter-spacing:2px; margin-bottom:8px;">REVENUE SEGMENTS - CLICK TO EXPLORE</div>
       <div class="rv-seg-list" id="rvSegList"></div>
 
       <!-- Bottom metrics -->
@@ -5383,7 +5384,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
     <!-- LEFT: Interactive donut -->
     <div class="build-left" data-delay="500" style="flex:1;">
-      <div class="mono cyan" style="font-size:11px; letter-spacing:2px; margin-bottom:14px;">USE OF FUNDS &mdash; HOVER TO EXPLORE</div>
+      <div class="mono cyan" style="font-size:11px; letter-spacing:2px; margin-bottom:14px;">USE OF FUNDS - HOVER TO EXPLORE</div>
 
       <div style="display:flex; gap:24px; align-items:center; position:relative;">
         <!-- Donut -->
@@ -5405,7 +5406,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
     <!-- RIGHT: Milestone roadmap -->
     <div class="build-right" data-delay="700" style="flex:1;">
-      <div class="mono cyan" style="font-size:11px; letter-spacing:2px; margin-bottom:14px;">MILESTONE ROADMAP &mdash; CLICK TO EXPAND</div>
+      <div class="mono cyan" style="font-size:11px; letter-spacing:2px; margin-bottom:14px;">MILESTONE ROADMAP - CLICK TO EXPAND</div>
 
       <div class="ask-tl" id="askTimeline">
         <!-- Milestone 1 -->
@@ -5440,7 +5441,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
             <div style="font-size:16px;font-weight:800;color:var(--light-cyan);margin-bottom:10px;">Traction — Next $2M</div>
             <strong>Platform:</strong> New expert models added to FATHOM. Construction &amp; geotech tiers scaling.<br>
             <strong>Adjacent:</strong> Avalanche safety &amp; snowpack verticals live via ARTIMUS. Zero new R&amp;D.<br>
-            <strong>Defense:</strong> SBIR Phase II ($2M) &mdash; full R&amp;D development &amp; field demo.
+            <strong>Defense:</strong> SBIR Phase II ($2M) - full R&amp;D development &amp; field demo.
           </div>
         </div>
 
@@ -5680,7 +5681,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   <div style="position:absolute; top:20px; left:32px; z-index:5; display:flex; align-items:center; gap:12px;">
     <span style="font-family:'Consolas','Inter',monospace; font-size:11px; font-weight:700; color:#00e5cc; letter-spacing:2px; text-transform:uppercase;">Appendix</span>
     <span style="font-size:11px; color:rgba(255,255,255,0.2);">|</span>
-    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">ARTIMUS &mdash; Defense &amp; UAV</span>
+    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">ARTIMUS - Defense &amp; UAV</span>
   </div>
   <div class="accent-bar" style="top:80px; height:60px;"></div>
 
@@ -5711,7 +5712,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         Defense-grade sensing. <span class="cyan">Proposed for the Arctic.</span>
       </div>
       <div style="font-size:17px; color:rgba(255,255,255,0.7); margin-top:8px; max-width:700px; line-height:1.6;">
-        Arctic terrain can kill a convoy before the enemy does. SmartAuger Technologies and OSU&rsquo;s ElectroScience Laboratory have jointly proposed ARTIMUS to answer the questions warfighters need most &mdash; can my vehicles cross this terrain, is it safe for troops on foot, what&rsquo;s the best route from here to there? If awarded, ARTIMUS delivers a full-stack UAV sensor platform and ML-driven RAG engine that turns raw Arctic terrain data into actionable mobility intelligence &mdash; purpose-built for the warfighter, deployable in minutes.
+        Arctic terrain can kill a convoy before the enemy does. SmartAuger Technologies and OSU&rsquo;s ElectroScience Laboratory have jointly proposed ARTIMUS to answer the questions warfighters need most - can my vehicles cross this terrain, is it safe for troops on foot, what&rsquo;s the best route from here to there? If awarded, ARTIMUS delivers a full-stack UAV sensor platform and ML-driven RAG engine that turns raw Arctic terrain data into actionable mobility intelligence - purpose-built for the warfighter, deployable in minutes.
       </div>
     </div>
     <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; flex:0 0 700px; padding-top:30px;">
@@ -5724,17 +5725,17 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     <div class="card build" data-delay="500" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
       <div class="card-accent"></div>
       <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">UAV &amp; RF Hardware</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Proposed hybrid UAV platform selection, payload mechanical engineering, and multi-sensor integration. Our plan converts OSU ElectroScience research into fielded RF hardware &mdash; with civilian commercialization rights retained. Defense funds the R&amp;D; we own the upside across a vast pipeline of commercial markets.</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Proposed hybrid UAV platform selection, payload mechanical engineering, and multi-sensor integration. Our plan converts OSU ElectroScience research into fielded RF hardware - with civilian commercialization rights retained. Defense funds the R&amp;D; we own the upside across a vast pipeline of commercial markets.</div>
     </div>
     <div class="card build" data-delay="700" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
       <div class="card-accent"></div>
       <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">Data Uplink &amp; Encryption</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Designed for comms-denied, adversarial environments. Data will be encrypted at the edge and synced to cloud when bandwidth allows &mdash; targeting full DOD data and AI model assurance compliance, without sacrificing operational security.</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Designed for comms-denied, adversarial environments. Data will be encrypted at the edge and synced to cloud when bandwidth allows - targeting full DOD data and AI model assurance compliance, without sacrificing operational security.</div>
     </div>
     <div class="card build" data-delay="900" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
       <div class="card-accent"></div>
       <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">ATAK &amp; Warfighter Interface</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">One button. The proposed system will enable fully autonomous route pathing, geophysical track assignment, and optimized flight coverage &mdash; delivered as a native ATAK plugin. Complex multi-sensor operations, mission-ready in seconds.</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">One button. The proposed system will enable fully autonomous route pathing, geophysical track assignment, and optimized flight coverage - delivered as a native ATAK plugin. Complex multi-sensor operations, mission-ready in seconds.</div>
     </div>
     <div class="card build" data-delay="1100" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
       <div class="card-accent"></div>
@@ -5758,7 +5759,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   <div style="position:absolute; top:20px; left:32px; z-index:5; display:flex; align-items:center; gap:12px;">
     <span style="font-family:'Consolas','Inter',monospace; font-size:11px; font-weight:700; color:#00e5cc; letter-spacing:2px; text-transform:uppercase;">Appendix</span>
     <span style="font-size:11px; color:rgba(255,255,255,0.2);">|</span>
-    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">GRAVE-SIM-003 &mdash; Advanced Simulation Data</span>
+    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">GRAVE-SIM-003 - Advanced Simulation Data</span>
     <span style="font-size:9px; font-weight:700; color:#ff6b6b; letter-spacing:1px; text-transform:uppercase; background:rgba(255,107,107,0.1); border:1px solid rgba(255,107,107,0.2); border-radius:3px; padding:2px 8px;">Proprietary</span>
   </div>
   <iframe src="SIMULATION_RESULTS.html" style="width:100%; height:calc(100% - 44px); border:none; position:absolute; top:44px; left:0; right:0; bottom:0;"></iframe>
@@ -5793,21 +5794,21 @@ if (sessionStorage.getItem('sa_auth') === '1') {
           <div style="display:flex; align-items:baseline; gap:10px;">
             <span style="font-size:13px; font-weight:800; color:var(--cyan-dim); letter-spacing:1px; white-space:nowrap;">01</span>
             <p style="font-size:clamp(14px, 1.4vw, 17px); line-height:1.6; color:var(--dark-muted); margin:0;">
-              <span style="color:var(--dark-text); font-weight:700;">Utility mapping</span> &mdash; $8.75B market, <span style="font-weight:700;">7.88% CAGR</span>. Regulation is mandating 3D subsurface mapping globally.
+              <span style="color:var(--dark-text); font-weight:700;">Utility mapping</span> - $8.75B market, <span style="font-weight:700;">7.88% CAGR</span>. Regulation is mandating 3D subsurface mapping globally.
             </p>
           </div>
 
           <div style="display:flex; align-items:baseline; gap:10px;">
             <span style="font-size:13px; font-weight:800; color:var(--cyan-dim); letter-spacing:1px; white-space:nowrap;">02</span>
             <p style="font-size:clamp(14px, 1.4vw, 17px); line-height:1.6; color:var(--dark-muted); margin:0;">
-              <span style="color:var(--dark-text); font-weight:700;">AI interpretation</span> &mdash; $3.55B market, <span style="font-weight:700;">19.8% CAGR</span>. The fastest-growing layer in geospatial analytics.
+              <span style="color:var(--dark-text); font-weight:700;">AI interpretation</span> - $3.55B market, <span style="font-weight:700;">19.8% CAGR</span>. The fastest-growing layer in geospatial analytics.
             </p>
           </div>
 
           <div style="display:flex; align-items:baseline; gap:10px;">
             <span style="font-size:13px; font-weight:800; color:var(--cyan-dim); letter-spacing:1px; white-space:nowrap;">03</span>
             <p style="font-size:clamp(14px, 1.4vw, 17px); line-height:1.6; color:var(--dark-muted); margin:0;">
-              <span style="color:var(--dark-text); font-weight:700;">Defense AI &amp; sensing</span> &mdash; $10B+ market, <span style="font-weight:700;">13.4% CAGR</span>. DoD allocated $25.2B for AI in FY2025. NDAA bans foreign LiDAR from June 2026.
+              <span style="color:var(--dark-text); font-weight:700;">Defense AI &amp; sensing</span> - $10B+ market, <span style="font-weight:700;">13.4% CAGR</span>. DoD allocated $25.2B for AI in FY2025. NDAA bans foreign LiDAR from June 2026.
             </p>
           </div>
 
@@ -6009,7 +6010,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     <div class="card build" data-delay="1000" style="padding-left:20px;">
       <div class="card-accent"></div>
       <div class="syne" style="font-weight:700; font-size:19px; color:var(--deep);">Automated Classification</div>
-      <div class="muted" style="font-size:22px; margin-top:6px;">Pipe, cable, conduit &mdash; identified and labeled automatically</div>
+      <div class="muted" style="font-size:22px; margin-top:6px;">Pipe, cable, conduit - identified and labeled automatically</div>
     </div>
     <div class="card build" data-delay="1200" style="padding-left:20px;">
       <div class="card-accent"></div>
@@ -6146,12 +6147,12 @@ if (sessionStorage.getItem('sa_auth') === '1') {
         <div class="card build" data-delay="1500" style="padding-left:20px;">
           <div class="card-accent"></div>
           <div class="syne" style="font-weight:700; font-size:18px; color:var(--dark-text);">AI Interpretation Demand</div>
-          <div class="muted" style="font-size:16px; margin-top:4px;">Analysts can't scale &mdash; market shifting from manual services to cloud software</div>
+          <div class="muted" style="font-size:16px; margin-top:4px;">Analysts can't scale - market shifting from manual services to cloud software</div>
         </div>
         <div class="card build" data-delay="1700" style="padding-left:20px;">
           <div class="card-accent"></div>
           <div class="syne" style="font-weight:700; font-size:18px; color:var(--dark-text);">Defense AI Acceleration</div>
-          <div class="muted" style="font-size:16px; margin-top:4px;">DoD allocated $25.2B for AI in FY2025 &mdash; NDAA bans foreign LiDAR June 2026</div>
+          <div class="muted" style="font-size:16px; margin-top:4px;">DoD allocated $25.2B for AI in FY2025 - NDAA bans foreign LiDAR June 2026</div>
         </div>
       </div>
     </div>
@@ -7084,11 +7085,11 @@ const _btnStyleAlt = 'display:inline-block; padding:6px 12px; margin:3px 4px 3px
 const demoAnswers = [
   {
     text: '<strong>20 utility targets identified</strong> across the 463.9 ft survey line:<br><br>' +
-      '&#8226; <strong>#17 Utility at Surface</strong> &mdash; 217.5 ft, 3.9\' depth, 99% confidence<br>' +
-      '&#8226; <strong>#3 & #4 Multi-utility corridor</strong> &mdash; 64.9-69.5 ft, ~5.9\' depth<br>' +
-      '&#8226; <strong>#9, #10, #12 Deep utilities</strong> &mdash; 107-145 ft, 8.4-8.7\' depth<br>' +
-      '&#8226; <strong>#16 Electric</strong> &mdash; 181.2 ft, 5.3\' depth<br>' +
-      '&#8226; <strong>#28 Deepest utility</strong> &mdash; 339.4 ft, 7.6\' depth<br><br>' +
+      '&#8226; <strong>#17 Utility at Surface</strong> - 217.5 ft, 3.9\' depth, 99% confidence<br>' +
+      '&#8226; <strong>#3 & #4 Multi-utility corridor</strong> - 64.9-69.5 ft, ~5.9\' depth<br>' +
+      '&#8226; <strong>#9, #10, #12 Deep utilities</strong> - 107-145 ft, 8.4-8.7\' depth<br>' +
+      '&#8226; <strong>#16 Electric</strong> - 181.2 ft, 5.3\' depth<br>' +
+      '&#8226; <strong>#28 Deepest utility</strong> - 339.4 ft, 7.6\' depth<br><br>' +
       '<span style="font-size:10px; color:rgba(255,255,255,0.35);">Classified per ASCE 38-22 Quality Level B. APWA color coding applied.</span><br><br>' +
       '<span style="font-size:11px; color:rgba(255,255,255,0.5);">What would you like to do next?</span><br>' +
       '<span style="' + _btnStyle + '" onclick="demoProGate()">&#128204; Export Utility Map (KMZ)</span>' +
@@ -7100,23 +7101,23 @@ const demoAnswers = [
   {
     text: '<strong>Multi-utility conflict zone detected:</strong><br><br>' +
       '<span style="color:#f59e0b;">&#9888; 3 utilities within 12 ft at 64-76 ft</span><br>' +
-      '<strong>#3 and #4</strong> &mdash; 4.6 ft lateral spacing at ~5.9\' depth<br>' +
-      '<strong>#5</strong> &mdash; 76.3 ft, adds a third line to this corridor<br><br>' +
+      '<strong>#3 and #4</strong> - 4.6 ft lateral spacing at ~5.9\' depth<br>' +
+      '<strong>#5</strong> - 76.3 ft, adds a third line to this corridor<br><br>' +
       '<strong>Deep parallel corridor at 107-114 ft:</strong><br>' +
-      '<strong>#9 and #10</strong> &mdash; 8.4-8.6\' depth, running parallel. Depth profile is consistent with <strong>water/sewer mains</strong> in northern MN municipalities (frost line: 7.5\').<br><br>' +
+      '<strong>#9 and #10</strong> - 8.4-8.6\' depth, running parallel. Depth profile is consistent with <strong>water/sewer mains</strong> in northern MN municipalities (frost line: 7.5\').<br><br>' +
       '<span style="font-size:11px; color:rgba(255,255,255,0.5);">Is work planned near these locations?</span><br>' +
-      '<span style="' + _btnStyle + '" onclick="demoProGate()">&#9889; Yes &mdash; Generate Conflict Matrix</span>' +
+      '<span style="' + _btnStyle + '" onclick="demoProGate()">&#9889; Yes - Generate Conflict Matrix</span>' +
       '<span style="' + _btnStyle + '" onclick="demoProGate()">&#128204; Flag for Design Review</span>' +
       '<span style="' + _btnStyleAlt + '" onclick="demoProGate()">View MN DOT Clearance Requirements</span>' +
-      '<span style="' + _btnStyleAlt + '" onclick="demoProGate()">No &mdash; Log for Records</span>',
+      '<span style="' + _btnStyleAlt + '" onclick="demoProGate()">No - Log for Records</span>',
     highlight: [3,4,5,9,10]
   },
   {
-    text: '<strong>Pavement condition summary &mdash; 17 anomaly targets:</strong><br><br>' +
-      '<span style="color:#f59e0b;">&#9888; High-density cluster: 280-370 ft</span> &mdash; 6 targets in 90 ft<br>' +
-      '&#8226; <strong>#22 & #23</strong> &mdash; 280-284 ft, 99% confidence, active subbase failure<br>' +
-      '&#8226; <strong>#2</strong> &mdash; 60.0 ft, near-surface. Pattern consistent with freeze-thaw damage.<br>' +
-      '&#8226; <strong>#31</strong> &mdash; 368.8 ft, part of 280-370 ft degradation cluster<br><br>' +
+    text: '<strong>Pavement condition summary - 17 anomaly targets:</strong><br><br>' +
+      '<span style="color:#f59e0b;">&#9888; High-density cluster: 280-370 ft</span> - 6 targets in 90 ft<br>' +
+      '&#8226; <strong>#22 & #23</strong> - 280-284 ft, 99% confidence, active subbase failure<br>' +
+      '&#8226; <strong>#2</strong> - 60.0 ft, near-surface. Pattern consistent with freeze-thaw damage.<br>' +
+      '&#8226; <strong>#31</strong> - 368.8 ft, part of 280-370 ft degradation cluster<br><br>' +
       '<span style="color:#22c55e;">&#10003; Estimated PCI: 35-42 (Poor-Fair)</span><br>' +
       '<span style="font-size:10px; color:rgba(255,255,255,0.35);">Based on anomaly density per ASTM D6433-20 distress mapping.</span><br><br>' +
       '<span style="font-size:11px; color:rgba(255,255,255,0.5);">Select a follow-up action:</span><br>' +
@@ -7128,12 +7129,12 @@ const demoAnswers = [
   },
   {
     text: '<strong>5 deepest targets in this survey:</strong><br><br>' +
-      '&#8226; <strong>#12 Utility</strong> &mdash; 145.4 ft, <strong>8.7\' depth</strong><br>' +
-      '&#8226; <strong>#10 Utility</strong> &mdash; 114.0 ft, 8.6\' depth<br>' +
-      '&#8226; <strong>#9 Utility</strong> &mdash; 107.9 ft, 8.4\' depth<br>' +
-      '&#8226; <strong>#28 Utility</strong> &mdash; 339.4 ft, 7.6\' depth<br>' +
-      '&#8226; <strong>#1 Layer Degradation</strong> &mdash; 20.7 ft, 7.3\' depth<br><br>' +
-      '<span style="color:var(--cyan);">&#9432; Depth Context:</span> Utilities at 8-9\' in Itasca County, MN are typically <strong>water mains or sanitary sewer</strong> &mdash; installed below the <strong>7.5\' frost line</strong> (MN Code 4714.0603). Targets #9, #10, #12 form a corridor at 107-145 ft &mdash; likely a single trunk line.<br><br>' +
+      '&#8226; <strong>#12 Utility</strong> - 145.4 ft, <strong>8.7\' depth</strong><br>' +
+      '&#8226; <strong>#10 Utility</strong> - 114.0 ft, 8.6\' depth<br>' +
+      '&#8226; <strong>#9 Utility</strong> - 107.9 ft, 8.4\' depth<br>' +
+      '&#8226; <strong>#28 Utility</strong> - 339.4 ft, 7.6\' depth<br>' +
+      '&#8226; <strong>#1 Layer Degradation</strong> - 20.7 ft, 7.3\' depth<br><br>' +
+      '<span style="color:var(--cyan);">&#9432; Depth Context:</span> Utilities at 8-9\' in Itasca County, MN are typically <strong>water mains or sanitary sewer</strong> - installed below the <strong>7.5\' frost line</strong> (MN Code 4714.0603). Targets #9, #10, #12 form a corridor at 107-145 ft - likely a single trunk line.<br><br>' +
       '<span style="font-size:11px; color:rgba(255,255,255,0.5);">Explore further:</span><br>' +
       '<span style="' + _btnStyle + '" onclick="demoProGate()">&#128269; Identify Utility Type by Depth</span>' +
       '<span style="' + _btnStyle + '" onclick="demoProGate()">&#128506; View Deer River Utility Atlas</span>' +
@@ -7143,8 +7144,8 @@ const demoAnswers = [
   },
   {
     text: '<strong>2 layer degradation zones:</strong><br><br>' +
-      '&#8226; <strong>#1</strong> &mdash; 0-20.7 ft, 7.3\' depth. Full-width layer separation &mdash; indicates <strong>delamination between aggregate base and subgrade</strong>. Likely moisture-driven.<br><br>' +
-      '&#8226; <strong>#7</strong> &mdash; 95.5 ft, 5.3\' depth. Localized zone adjacent to surface anomaly #8. Pattern suggests <strong>top-down crack propagation into the base layer</strong>.<br><br>' +
+      '&#8226; <strong>#1</strong> - 0-20.7 ft, 7.3\' depth. Full-width layer separation - indicates <strong>delamination between aggregate base and subgrade</strong>. Likely moisture-driven.<br><br>' +
+      '&#8226; <strong>#7</strong> - 95.5 ft, 5.3\' depth. Localized zone adjacent to surface anomaly #8. Pattern suggests <strong>top-down crack propagation into the base layer</strong>.<br><br>' +
       '<span style="color:#22c55e;">&#10003; Risk Level: Low-Medium</span><br>' +
       '<span style="font-size:10px; color:rgba(255,255,255,0.35);">No imminent structural failure. Degradation will accelerate under freeze-thaw loading.</span><br><br>' +
       '<span style="font-size:11px; color:rgba(255,255,255,0.5);">What would you like to do?</span><br>' +
@@ -7196,26 +7197,26 @@ function demoChatQuery(idx) {
 
 // ── Inline follow-up button handler ──
 const demoFollowUps = {
-  'Export Utility Map (KMZ)': 'Generating KMZ file with 20 utility locations, GPS coordinates, depth data, and APWA color coding. File includes attribute table with confidence scores and classification.<br><br><span style="color:var(--cyan);">&#10003; utility_map_line47.kmz</span> &mdash; Ready for download. Compatible with Google Earth, ArcGIS, and QGIS.',
+  'Export Utility Map (KMZ)': 'Generating KMZ file with 20 utility locations, GPS coordinates, depth data, and APWA color coding. File includes attribute table with confidence scores and classification.<br><br><span style="color:var(--cyan);">&#10003; utility_map_line47.kmz</span> - Ready for download. Compatible with Google Earth, ArcGIS, and QGIS.',
   'Generate One-Call Ticket': 'Pre-filled Gopher State One Call (GSOC) ticket for <strong>Itasca County, Deer River</strong>:<br>&#8226; 20 utility targets flagged<br>&#8226; GPS bounds: 47.3326&deg;N, 93.8491-93.8509&deg;W<br>&#8226; Conflict zone: 64-76 ft (3 utilities, 4.6 ft spacing)<br><br><span style="color:var(--cyan);">&#10003; Ticket draft ready for review.</span>',
-  'View Itasca County Depth Codes': '<strong>Itasca County, MN &mdash; Typical Utility Depths:</strong><br>&#8226; Electric: 3-4\' (direct burial) or surface (overhead)<br>&#8226; Water main: 7.5-9\' (below frost line)<br>&#8226; Sanitary sewer: 6-10\' (gravity flow)<br>&#8226; Gas: 3-4\' (residential), 4-5\' (transmission)<br>&#8226; Telecom/fiber: 2-3\'<br><br><span style="color:rgba(255,255,255,0.4);">Source: MN Plumbing Code 4714.0603, MN Rules 7560.0130</span>',
+  'View Itasca County Depth Codes': '<strong>Itasca County, MN - Typical Utility Depths:</strong><br>&#8226; Electric: 3-4\' (direct burial) or surface (overhead)<br>&#8226; Water main: 7.5-9\' (below frost line)<br>&#8226; Sanitary sewer: 6-10\' (gravity flow)<br>&#8226; Gas: 3-4\' (residential), 4-5\' (transmission)<br>&#8226; Telecom/fiber: 2-3\'<br><br><span style="color:rgba(255,255,255,0.4);">Source: MN Plumbing Code 4714.0603, MN Rules 7560.0130</span>',
   'Cross-Reference Utility Owners': '<strong>Utility owners in survey area (Deer River, MN):</strong><br>&#8226; <strong>Water/Sewer:</strong> City of Deer River Public Works<br>&#8226; <strong>Electric:</strong> Itasca-Mantrap Co-op Electric (overhead & buried)<br>&#8226; <strong>Gas:</strong> Minnesota Energy Resources<br>&#8226; <strong>Telecom:</strong> Paul Bunyan Communications<br><br><span style="color:rgba(255,255,255,0.4);">Contact via GSOC ticket #811 for locate requests.</span>',
-  'Yes — Generate Conflict Matrix': '<strong>Utility Conflict Matrix &mdash; 64-76 ft zone:</strong><br><table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:11px;"><tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:4px;color:rgba(255,255,255,0.5);">Pair</td><td style="padding:4px;color:rgba(255,255,255,0.5);">Spacing</td><td style="padding:4px;color:rgba(255,255,255,0.5);">Risk</td></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.06);"><td style="padding:4px;">#3 ↔ #4</td><td style="padding:4px;">4.6 ft</td><td style="padding:4px;color:#f59e0b;">High</td></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.06);"><td style="padding:4px;">#4 ↔ #5</td><td style="padding:4px;">6.8 ft</td><td style="padding:4px;color:#f59e0b;">Medium</td></tr><tr><td style="padding:4px;">#9 ↔ #10</td><td style="padding:4px;">6.1 ft</td><td style="padding:4px;color:#f59e0b;">Medium</td></tr></table><span style="color:rgba(255,255,255,0.4);">MN DOT requires 5 ft min clearance (8810.3200). 1 of 3 pairs non-compliant.</span>',
-  'Flag for Design Review': '<span style="color:var(--cyan);">&#10003; 2 zones flagged for design review:</span><br>&#8226; Zone A: 64-76 ft &mdash; 3-utility corridor, non-compliant spacing<br>&#8226; Zone B: 107-145 ft &mdash; deep parallel utilities<br><br>Added to project review queue with GPS coordinates and detection data attached.',
+  'Yes — Generate Conflict Matrix': '<strong>Utility Conflict Matrix - 64-76 ft zone:</strong><br><table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:11px;"><tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:4px;color:rgba(255,255,255,0.5);">Pair</td><td style="padding:4px;color:rgba(255,255,255,0.5);">Spacing</td><td style="padding:4px;color:rgba(255,255,255,0.5);">Risk</td></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.06);"><td style="padding:4px;">#3 ↔ #4</td><td style="padding:4px;">4.6 ft</td><td style="padding:4px;color:#f59e0b;">High</td></tr><tr style="border-bottom:1px solid rgba(255,255,255,0.06);"><td style="padding:4px;">#4 ↔ #5</td><td style="padding:4px;">6.8 ft</td><td style="padding:4px;color:#f59e0b;">Medium</td></tr><tr><td style="padding:4px;">#9 ↔ #10</td><td style="padding:4px;">6.1 ft</td><td style="padding:4px;color:#f59e0b;">Medium</td></tr></table><span style="color:rgba(255,255,255,0.4);">MN DOT requires 5 ft min clearance (8810.3200). 1 of 3 pairs non-compliant.</span>',
+  'Flag for Design Review': '<span style="color:var(--cyan);">&#10003; 2 zones flagged for design review:</span><br>&#8226; Zone A: 64-76 ft - 3-utility corridor, non-compliant spacing<br>&#8226; Zone B: 107-145 ft - deep parallel utilities<br><br>Added to project review queue with GPS coordinates and detection data attached.',
   'View MN DOT Clearance Requirements': '<strong>MN DOT Utility Accommodation (8810.3200):</strong><br>&#8226; Min horizontal clearance: <strong>5 ft</strong> between utilities<br>&#8226; Min vertical clearance: <strong>1 ft</strong> at crossings<br>&#8226; Electric-to-gas clearance: <strong>12 in</strong> minimum<br>&#8226; Potholing required within <strong>tolerance zone (18-24 in)</strong> of marked utility<br><br><span style="color:rgba(255,255,255,0.4);">Full spec: MN Rules Chapter 8810, rev. 2023</span>',
   'No — Log for Records': '<span style="color:var(--cyan);">&#10003; Conflict zones logged to project record.</span><br>Survey data archived with GPS coordinates, detection metadata, and conflict flags. Available for future reference if work is planned in this area.',
-  'Generate PCI Report': '<strong>Pavement Condition Index &mdash; Line 47 Summary:</strong><br>&#8226; Overall PCI estimate: <strong>38 (Poor)</strong><br>&#8226; Worst segment: 280-370 ft &mdash; PCI ~28<br>&#8226; Best segment: 150-250 ft &mdash; PCI ~62<br>&#8226; Distress types: subbase failure, delamination, surface cracking<br><br><span style="color:var(--cyan);">&#10003; Full report generated.</span> Includes distress map, severity index, and recommended intervention timeline per ASTM D6433-20.',
+  'Generate PCI Report': '<strong>Pavement Condition Index - Line 47 Summary:</strong><br>&#8226; Overall PCI estimate: <strong>38 (Poor)</strong><br>&#8226; Worst segment: 280-370 ft - PCI ~28<br>&#8226; Best segment: 150-250 ft - PCI ~62<br>&#8226; Distress types: subbase failure, delamination, surface cracking<br><br><span style="color:var(--cyan);">&#10003; Full report generated.</span> Includes distress map, severity index, and recommended intervention timeline per ASTM D6433-20.',
   'Export Distress Map (PDF)': '<span style="color:var(--cyan);">&#10003; Distress map exported:</span> <strong>line47_distress_map.pdf</strong><br>&#8226; 17 anomaly locations plotted with GPS<br>&#8226; Color-coded by type and severity<br>&#8226; Includes depth profile and confidence scores<br>&#8226; 280-370 ft cluster highlighted as priority zone',
   'Compare to Previous Survey': 'No previous survey data found for this GPS corridor. This is the <strong>baseline scan</strong> for future comparison.<br><br><span style="color:var(--cyan);">&#9432; Tip:</span> Schedule a follow-up scan in 12-18 months. UtiliSenseAI will auto-compare degradation progression and flag new or worsening anomalies.',
-  'Estimate Repair Costs': '<strong>Repair cost estimates (2026 MnDOT rates):</strong><br>&#8226; 280-370 ft &mdash; Full-depth reclamation: <strong>$18-24/SY</strong> (~$4,800-6,400)<br>&#8226; 60 ft zone &mdash; Mill & overlay: <strong>$8-12/SY</strong> (~$320-480)<br>&#8226; 145 ft zone &mdash; Crack seal: <strong>$2-4/LF</strong> (~$80-160)<br><br><span style="color:rgba(255,255,255,0.4);">Estimates based on MnDOT Average Bid Prices 2025-2026. Actual costs vary by contractor and scope.</span>',
-  'Identify Utility Type by Depth': '<strong>Depth-based utility classification (Itasca County):</strong><br>&#8226; #12 (8.7\') &mdash; <span style="color:#3b82f6;">&#9679;</span> Likely <strong>water main</strong> (below 7.5\' frost line)<br>&#8226; #10 (8.6\') &mdash; <span style="color:#3b82f6;">&#9679;</span> Likely <strong>water main</strong><br>&#8226; #9 (8.4\') &mdash; <span style="color:#22c55e;">&#9679;</span> Likely <strong>sanitary sewer</strong> (gravity flow)<br>&#8226; #28 (7.6\') &mdash; <span style="color:#3b82f6;">&#9679;</span> Likely <strong>water main</strong><br><br><span style="color:rgba(255,255,255,0.4);">Classification is probabilistic. Potholing recommended for Quality Level A verification.</span>',
-  'View Deer River Utility Atlas': '<strong>Deer River, MN &mdash; Municipal Utility Overview:</strong><br>&#8226; Water system: ~12 miles of distribution mains<br>&#8226; Sewer system: gravity collection + lift stations<br>&#8226; Electric: Itasca-Mantrap Co-op (mostly overhead in this area)<br>&#8226; Survey corridor crosses <strong>2nd St SE</strong> near municipal yard<br><br><span style="color:rgba(255,255,255,0.4);">Full atlas access requires City of Deer River GIS portal credentials.</span>',
-  'Check APWA Color Assignments': '<strong>APWA Uniform Color Code applied:</strong><br>&#8226; <span style="color:#ef4444;">&#9632; Red</span> &mdash; Electric (#16)<br>&#8226; <span style="color:#3b82f6;">&#9632; Blue</span> &mdash; Water (deep targets #9, #10, #12)<br>&#8226; <span style="color:#22c55e;">&#9632; Green</span> &mdash; Sewer (#28 pending verification)<br>&#8226; <span style="color:#f59e0b;">&#9632; Orange</span> &mdash; Unclassified utility (remaining 15 targets)<br><br><span style="color:rgba(255,255,255,0.4);">Colors auto-assigned based on depth profile and detection characteristics. Verify with One-Call records.</span>',
+  'Estimate Repair Costs': '<strong>Repair cost estimates (2026 MnDOT rates):</strong><br>&#8226; 280-370 ft - Full-depth reclamation: <strong>$18-24/SY</strong> (~$4,800-6,400)<br>&#8226; 60 ft zone - Mill & overlay: <strong>$8-12/SY</strong> (~$320-480)<br>&#8226; 145 ft zone - Crack seal: <strong>$2-4/LF</strong> (~$80-160)<br><br><span style="color:rgba(255,255,255,0.4);">Estimates based on MnDOT Average Bid Prices 2025-2026. Actual costs vary by contractor and scope.</span>',
+  'Identify Utility Type by Depth': '<strong>Depth-based utility classification (Itasca County):</strong><br>&#8226; #12 (8.7\') - <span style="color:#3b82f6;">&#9679;</span> Likely <strong>water main</strong> (below 7.5\' frost line)<br>&#8226; #10 (8.6\') - <span style="color:#3b82f6;">&#9679;</span> Likely <strong>water main</strong><br>&#8226; #9 (8.4\') - <span style="color:#22c55e;">&#9679;</span> Likely <strong>sanitary sewer</strong> (gravity flow)<br>&#8226; #28 (7.6\') - <span style="color:#3b82f6;">&#9679;</span> Likely <strong>water main</strong><br><br><span style="color:rgba(255,255,255,0.4);">Classification is probabilistic. Potholing recommended for Quality Level A verification.</span>',
+  'View Deer River Utility Atlas': '<strong>Deer River, MN - Municipal Utility Overview:</strong><br>&#8226; Water system: ~12 miles of distribution mains<br>&#8226; Sewer system: gravity collection + lift stations<br>&#8226; Electric: Itasca-Mantrap Co-op (mostly overhead in this area)<br>&#8226; Survey corridor crosses <strong>2nd St SE</strong> near municipal yard<br><br><span style="color:rgba(255,255,255,0.4);">Full atlas access requires City of Deer River GIS portal credentials.</span>',
+  'Check APWA Color Assignments': '<strong>APWA Uniform Color Code applied:</strong><br>&#8226; <span style="color:#ef4444;">&#9632; Red</span> - Electric (#16)<br>&#8226; <span style="color:#3b82f6;">&#9632; Blue</span> - Water (deep targets #9, #10, #12)<br>&#8226; <span style="color:#22c55e;">&#9632; Green</span> - Sewer (#28 pending verification)<br>&#8226; <span style="color:#f59e0b;">&#9632; Orange</span> - Unclassified utility (remaining 15 targets)<br><br><span style="color:rgba(255,255,255,0.4);">Colors auto-assigned based on depth profile and detection characteristics. Verify with One-Call records.</span>',
   'Request Utility Owner Records': 'Filing records request with <strong>Gopher State One Call (GSOC)</strong> for GPS bounds:<br>47.3326&deg;N, 93.8491-93.8509&deg;W<br><br>Expected response time: <strong>2-3 business days</strong><br>Registered utilities in this area: ~4 operators<br><br><span style="color:var(--cyan);">&#10003; Request queued.</span> You will be notified when records are available.',
   'Schedule Re-Scan (12-18 mo)': '<span style="color:var(--cyan);">&#10003; Re-scan scheduled.</span><br>&#8226; Location: Line 47 corridor (47.3326&deg;N, 93.85&deg;W)<br>&#8226; Window: Q3-Q4 2027<br>&#8226; Purpose: Track layer degradation progression at zones #1 and #7<br>&#8226; Auto-comparison with today\'s baseline will be generated.',
   'Export Zone Report': '<span style="color:var(--cyan);">&#10003; Zone report exported:</span> <strong>line47_degradation_report.pdf</strong><br>&#8226; 2 layer degradation zones with GPS, depth, and confidence<br>&#8226; Risk assessment: Low-Medium<br>&#8226; Recommended actions per MnDOT 5-3.03<br>&#8226; Includes B-scan cross-sections for both zones',
   'View MnDOT Rehab Guidelines': '<strong>MnDOT Pavement Design Manual 5-3.03:</strong><br>&#8226; Layer delamination &lt; 10 ft width: <strong>Crack seal + monitor</strong><br>&#8226; Layer delamination &gt; 10 ft width: <strong>Full-depth repair or CTB stabilization</strong><br>&#8226; Re-scan interval: <strong>12-24 months</strong> for Low-Medium risk<br>&#8226; Trigger for emergency repair: <strong>PCI &lt; 25</strong> or surface deflection &gt; 15 mils',
-  'Add to Maintenance Queue': '<span style="color:var(--cyan);">&#10003; Added to maintenance queue:</span><br>&#8226; Zone #1 (0-20 ft): Priority <strong>Medium</strong> &mdash; CTB stabilization<br>&#8226; Zone #7 (95 ft): Priority <strong>Low</strong> &mdash; Crack seal<br><br>Maintenance supervisor will be notified. Scheduled for next available window.'
+  'Add to Maintenance Queue': '<span style="color:var(--cyan);">&#10003; Added to maintenance queue:</span><br>&#8226; Zone #1 (0-20 ft): Priority <strong>Medium</strong> - CTB stabilization<br>&#8226; Zone #7 (95 ft): Priority <strong>Low</strong> - Crack seal<br><br>Maintenance supervisor will be notified. Scheduled for next available window.'
 };
 
 function demoProGate() {
