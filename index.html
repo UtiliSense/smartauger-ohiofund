@@ -3607,6 +3607,313 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 </script>
 
 
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE — CALDOT CASE STUDY
+     ══════════════════════════════════════════════════════════ -->
+<section class="slide dark" data-slide="5b" style="background:#0A1628 !important;">
+  <div class="grid-bg" style="opacity:0.04;"></div>
+  <style>
+    [data-slide="5b"] .cd-row {
+      display:flex; gap:14px; align-items:stretch; width:100%; transition:all 0.4s ease;
+    }
+    [data-slide="5b"] .cd-card {
+      flex:1; border:1px solid rgba(255,255,255,0.06); border-radius:8px;
+      background:rgba(13,31,60,0.5); overflow:hidden; transition:all 0.4s ease;
+    }
+    [data-slide="5b"] .cd-row.active .cd-card {
+      border-color:rgba(0,212,200,0.2);
+      background:rgba(13,31,60,0.7);
+    }
+    [data-slide="5b"] .cd-card.problem { border-left:3px solid rgba(255,107,107,0.3); }
+    [data-slide="5b"] .cd-card.fix { border-left:3px solid rgba(0,212,200,0.3); }
+    [data-slide="5b"] .cd-row.active .cd-card.problem { border-left-color:#ff6b6b; }
+    [data-slide="5b"] .cd-row.active .cd-card.fix { border-left-color:#00D4C8; }
+    [data-slide="5b"] .cd-card-header {
+      padding:10px 14px; display:flex; align-items:center;
+      justify-content:space-between; gap:10px;
+    }
+    [data-slide="5b"] .cd-card-body {
+      max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.4s ease;
+      padding:0 14px;
+    }
+    [data-slide="5b"] .cd-row.active .cd-card-body {
+      max-height:200px; padding:0 14px 12px;
+    }
+    [data-slide="5b"] .cd-chevron {
+      width:14px; height:14px; flex-shrink:0; transition:transform 0.4s ease;
+      stroke:#8899BB; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    }
+    [data-slide="5b"] .cd-row.active .cd-chevron { transform:rotate(180deg); stroke:var(--cyan); }
+    [data-slide="5b"] .cd-arrow {
+      display:flex; align-items:center; justify-content:center; flex-shrink:0; width:24px;
+    }
+    [data-slide="5b"] .cd-arrow svg { opacity:0.2; transition:opacity 0.4s; }
+    [data-slide="5b"] .cd-row.active .cd-arrow svg { opacity:0.7; }
+    [data-slide="5b"] .cd-tag {
+      font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      padding:2px 7px; border-radius:3px; display:inline-block; margin-bottom:3px;
+    }
+    [data-slide="5b"] .cd-tag.red { color:#ff6b6b; background:rgba(255,107,107,0.08); border:1px solid rgba(255,107,107,0.15); }
+    [data-slide="5b"] .cd-tag.cyan { color:#00D4C8; background:rgba(0,212,200,0.08); border:1px solid rgba(0,212,200,0.15); }
+    /* Dim tags when not active */
+    [data-slide="5b"] .cd-row:not(.active) .cd-tag { opacity:0.5; }
+    [data-slide="5b"] .cd-row:not(.active) .cd-card-header div { opacity:0.5; }
+    [data-slide="5b"] .cd-stat {
+      flex:1; min-width:0; text-align:center; padding:8px 10px;
+      border:1px solid rgba(0,212,200,0.08); border-radius:6px; background:rgba(13,31,60,0.4);
+    }
+    [data-slide="5b"] .cd-badge {
+      font-size:9px; font-weight:600; color:#8899BB; letter-spacing:0.5px;
+      padding:3px 10px; border:1px solid rgba(136,153,187,0.15); border-radius:3px;
+      display:inline-block; background:rgba(13,31,60,0.4);
+    }
+    /* Step indicator */
+    [data-slide="5b"] .cd-step-dots {
+      display:flex; gap:6px; align-items:center; justify-content:center;
+    }
+    [data-slide="5b"] .cd-step-dot {
+      width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.15);
+      transition:all 0.4s; cursor:pointer; border:none; padding:0;
+    }
+    [data-slide="5b"] .cd-step-dot.active {
+      background:#00D4C8; box-shadow:0 0 8px rgba(0,212,200,0.5); transform:scale(1.4);
+    }
+    [data-slide="5b"] .cd-step-dot.done { background:rgba(0,212,200,0.3); }
+    [data-slide="5b"] .cd-nav-hint {
+      font-size:10px; color:rgba(255,255,255,0.25); letter-spacing:1px; text-transform:uppercase;
+      text-align:center; margin-top:2px;
+    }
+  </style>
+
+  <div class="slide-inner" style="max-width:1300px; padding:24px 40px 20px; display:flex; flex-direction:column; gap:12px; position:relative; z-index:1;">
+
+    <!-- Header bar -->
+    <div style="display:flex; align-items:baseline; justify-content:space-between; width:100%;">
+      <div>
+        <span style="font-size:11px; font-weight:700; color:#00D4C8; letter-spacing:2px; text-transform:uppercase;">CALIFORNIA DOT</span>
+        <span style="font-size:11px; color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+        <span style="font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:1px;">$10.9B IN ACTIVE CONTRACTS</span>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div style="font-family:'Inter',sans-serif; font-size:clamp(26px,3vw,36px); font-weight:900; color:#fff; letter-spacing:-1px; line-height:1.15;">
+      20,000 miles of subsurface data. <span style="color:#00D4C8;">No way to use it.</span>
+    </div>
+
+    <!-- Stats row -->
+    <div style="display:flex; gap:10px; width:100%;">
+      <div class="cd-stat">
+        <div style="font-size:clamp(24px,2.8vw,34px); font-weight:900; color:#00D4C8; line-height:1;">73%</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.45); margin-top:3px; line-height:1.3;">of projects hit utility conflicts</div>
+      </div>
+      <div class="cd-stat">
+        <div style="font-size:clamp(24px,2.8vw,34px); font-weight:900; color:#00D4C8; line-height:1;">70%</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.45); margin-top:3px; line-height:1.3;">of those were unforeseen - not on any plan</div>
+      </div>
+      <div class="cd-stat">
+        <div style="font-size:clamp(18px,2.2vw,26px); font-weight:900; color:#00D4C8; line-height:1;">$34K-$2.7M</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.45); margin-top:3px; line-height:1.3;">per-project delay payout range</div>
+      </div>
+      <div class="cd-stat">
+        <div style="font-size:clamp(24px,2.8vw,34px); font-weight:900; color:#00D4C8; line-height:1;">$4.62:1</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.45); margin-top:3px; line-height:1.3;">proven ROI from early geophysical intelligence</div>
+      </div>
+    </div>
+
+    <!-- Column headers -->
+    <div style="display:flex; gap:14px; width:100%; align-items:center; margin-top:4px;">
+      <div style="flex:1; font-size:10px; font-weight:700; color:#ff6b6b; letter-spacing:2px; text-transform:uppercase; padding-left:4px;">THE PROBLEM</div>
+      <div class="cd-arrow" style="width:24px;"></div>
+      <div style="flex:1; font-size:10px; font-weight:700; color:#00D4C8; letter-spacing:2px; text-transform:uppercase; padding-left:4px;">THE FATHOM FIX</div>
+    </div>
+
+    <!-- Row 1: Data Entropy -->
+    <div class="cd-row active" data-cd-row="0" onclick="cdSetRow(0)">
+      <div class="cd-card problem">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag red">01 - DATA ENTROPY</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">No central hub for 20,000 miles of scan data</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; margin:0;">Collected data forgotten in district archives - never correlated, never reused.</p>
+        </div>
+      </div>
+      <div class="cd-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M12 6L16 10L12 14" stroke="#00D4C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cd-card fix">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag cyan">UNIVERSAL INGESTION PIPELINE</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Any format, any sensor, any vintage - parsed on arrival</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(0,212,200,0.55); line-height:1.5; margin:0;">Normalized to sub-second timestamp precision. Zero IT lift for Caltrans.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Dark Archive -->
+    <div class="cd-row" data-cd-row="1" onclick="cdSetRow(1)">
+      <div class="cd-card problem">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag red">02 - DARK ARCHIVE</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Data locked in silos - no cross-district query</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; margin:0;">Only 15% of projects used a utility conflict matrix - no shared data layer existed.</p>
+        </div>
+      </div>
+      <div class="cd-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M12 6L16 10L12 14" stroke="#00D4C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cd-card fix">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag cyan">SINGLE SOURCE OF TRUTH</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Every record queryable in &lt;500ms - statewide</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(0,212,200,0.55); line-height:1.5; margin:0;">Search by location, date, sensor type, or interpreted result. One portal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: No Schema -->
+    <div class="cd-row" data-cd-row="2" onclick="cdSetRow(2)">
+      <div class="cd-card problem">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag red">03 - NO SCHEMA</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Scans carry no metadata - sensor, date, location undocumented</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; margin:0;">Plan accuracy ranged 40-90% across districts - context was missing, not the data.</p>
+        </div>
+      </div>
+      <div class="cd-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M12 6L16 10L12 14" stroke="#00D4C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cd-card fix">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag cyan">STRUCTURED METADATA ENGINE</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Auto-tagged: sensor, GNSS, pass orientation, soil class, depth</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(0,212,200,0.55); line-height:1.5; margin:0;">Machine-generated context. No manual entry by field crews.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: Interpretation Backlog -->
+    <div class="cd-row" data-cd-row="3" onclick="cdSetRow(3)">
+      <div class="cd-card problem">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag red">04 - INTERPRETATION BACKLOG</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Finite analysts, infinite scans - cost-saving data never reviewed</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; margin:0;">68% of projects required change orders for conflicts the existing data could have flagged.</p>
+        </div>
+      </div>
+      <div class="cd-arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M12 6L16 10L12 14" stroke="#00D4C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cd-card fix">
+        <div class="cd-card-header">
+          <div style="min-width:0;">
+            <div class="cd-tag cyan">9-MODEL AI EXPERT COUNCIL</div>
+            <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Every scan interpreted at ingestion - zero backlog, zero triage</div>
+          </div>
+          <svg class="cd-chevron" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6"/></svg>
+        </div>
+        <div class="cd-card-body">
+          <p style="font-size:11px; color:rgba(0,212,200,0.55); line-height:1.5; margin:0;">GPR, GNSS, soil, utility, EMI, terrain, time-series, public data, regulatory - parallel, always on.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FATHOM Delivers -->
+    <div style="border:1px solid rgba(0,212,200,0.15); border-radius:8px; background:rgba(0,212,200,0.03); padding:12px 16px; display:flex; gap:14px; align-items:flex-start; width:100%;">
+      <div style="font-size:9px; font-weight:800; color:#00D4C8; letter-spacing:2px; text-transform:uppercase; white-space:nowrap; padding-top:2px; flex-shrink:0;">FATHOM<br>DELIVERS</div>
+      <div style="font-size:11px; color:rgba(255,255,255,0.55); line-height:1.6;">
+        FATHOM ingests GPR, LiDAR, GNSS, GIS, and full project data in any format, <strong style="color:#fff;">deeply correlates it across every source and collection event</strong> into a unified queryable database, then runs parallel AI expert interpretation across the complete correlated dataset - delivering <strong style="color:#fff;">conflict maps, predictive risk scores, and automated reporting managed entirely by SmartAuger.</strong>
+      </div>
+    </div>
+
+    <!-- Compliance badges + step nav -->
+    <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="font-size:9px; font-weight:700; color:#8899BB; letter-spacing:1px; text-transform:uppercase; flex-shrink:0;">Managed end-to-end by SmartAuger</span>
+        <span class="cd-badge">FedRAMP-aligned</span>
+        <span class="cd-badge">NIST 800-171</span>
+        <span class="cd-badge">AWS GovCloud / Azure Gov</span>
+        <span class="cd-badge">SOC 2 pathway</span>
+        <span class="cd-badge">IOU-compatible API</span>
+        <span class="cd-badge">On-prem / air-gapped</span>
+      </div>
+      <div class="cd-step-dots" id="cdStepDots">
+        <button class="cd-step-dot active" onclick="cdSetRow(0)"></button>
+        <button class="cd-step-dot" onclick="cdSetRow(1)"></button>
+        <button class="cd-step-dot" onclick="cdSetRow(2)"></button>
+        <button class="cd-step-dot" onclick="cdSetRow(3)"></button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  var cdCurrent = 0;
+  function cdSetRow(idx) {
+    cdCurrent = idx;
+    var rows = document.querySelectorAll('[data-slide="5b"] .cd-row');
+    var dots = document.querySelectorAll('[data-slide="5b"] .cd-step-dot');
+    rows.forEach(function(r, i) {
+      r.classList.toggle('active', i === idx);
+    });
+    dots.forEach(function(d, i) {
+      d.classList.remove('active', 'done');
+      if (i === idx) d.classList.add('active');
+      else if (i < idx) d.classList.add('done');
+    });
+  }
+
+  // Auto-step: clicking the slide background (not on a row) advances to next row
+  // If all 4 shown, next click goes to next slide
+  (function(){
+    var sec = document.querySelector('[data-slide="5b"]');
+    if (!sec) return;
+
+    // Also allow keyboard right-arrow to step through rows before advancing slide
+    // We hook into the global navigation by intercepting clicks on the right half
+    sec.addEventListener('click', function(e) {
+      // Don't intercept if they clicked a row directly
+      if (e.target.closest('.cd-row') || e.target.closest('.cd-step-dot')) return;
+      // Advance to next row
+      if (cdCurrent < 3) {
+        cdSetRow(cdCurrent + 1);
+        e.stopPropagation();
+      }
+      // If already at row 3, let the normal slide navigation handle it
+    });
+  })();
+  </script>
+</section>
+
+
 <!-- ══════════════════════════════════════════════════════════
      SLIDE 08 — CAPABILITIES
      ══════════════════════════════════════════════════════════ -->
@@ -6557,7 +6864,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
 const SLIDE_TITLES = [
   'Cover', 'The Setup', 'The Problem',
-  'The Solution', 'Interactive Demo', 'The Outcome',
+  'The Solution', 'Interactive Demo', 'The Outcome', 'CalDOT Case Study',
   'Origin Story', 'GroundScope Hardware',
   'Mission Statement', 'Product Roadmap', 'Revenue Model',
   'Revenue Layers', 'The Ask', 'Appendix',
