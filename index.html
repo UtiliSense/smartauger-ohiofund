@@ -660,26 +660,7 @@
     .headline { font-size: 110% !important; }
   }
 
-  @media (max-width: 1400px) {
-    .slide { padding: 32px 32px 48px; }
-    .slide-inner { max-width: 100%; }
-    .stat-value { font-size: clamp(36px, 5vw, 72px) !important; }
-    .stat-label { font-size: 14px !important; }
-    .row.gap-48 { gap: 24px !important; }
-    .mt-48 { margin-top: 24px !important; }
-    .mt-32 { margin-top: 16px !important; }
-    .headline { font-size: 28px !important; }
-  }
-
-  /* Small screen handled by JS zoom in scaleDeck() */
-
-  @media (max-width: 1000px) {
-    .slide { padding: 24px 20px 44px; }
-    .row { flex-direction: column; }
-    .tam-container { width: 240px; height: 240px; }
-    .stat-value { font-size: clamp(28px, 4.5vw, 56px) !important; }
-    .stat-label { font-size: 12px !important; }
-  }
+  /* Responsive media queries removed — deck is fixed 1920x1080, scaled by JS scaleDeck() */
 
   /* Mobile blocker */
   @media (max-width: 768px) {
@@ -687,22 +668,7 @@
     .deck, .progress-bar, .nav-bar { display: none !important; }
   }
 
-  /* Height-based scaling for laptops */
-  @media (max-height: 900px) {
-    .slide { padding: 24px 32px 44px; }
-    .mt-48 { margin-top: 20px !important; }
-    .mt-32 { margin-top: 12px !important; }
-    .stat-value { font-size: clamp(36px, 5vw, 64px) !important; }
-    .stat-label { font-size: 13px !important; }
-  }
-  @media (max-height: 768px) {
-    .slide { padding: 16px 24px 36px; }
-    .mt-48 { margin-top: 14px !important; }
-    .mt-32 { margin-top: 8px !important; }
-    .stat-value { font-size: clamp(28px, 4vw, 52px) !important; }
-    .stat-label { font-size: 12px !important; }
-    .row.gap-48 { gap: 16px !important; }
-  }
+  /* Height-based queries removed — JS scaleDeck() handles all viewport scaling */
 
   /* Chat messages fill available space via flex:1 — no fixed max-height needed */
   /* Map panel */
@@ -6356,7 +6322,8 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   var deck = document.getElementById('deck');
   function scaleDeck() {
     var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    deck.style.zoom = s;
+    deck.style.transform = 'scale(' + s + ')';
+    deck.style.transformOrigin = 'center center';
   }
   scaleDeck();
   window.addEventListener('resize', scaleDeck);
