@@ -1918,7 +1918,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
               <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM Interpretation Engine</span>
               <span style="font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; background:rgba(0,229,204,0.1); border:1px solid rgba(0,229,204,0.25); border-radius:4px; padding:3px 10px;">Civilian Infrastructure</span>
             </div>
-            <video id="fathomDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="Fathom.mp4" type="video/mp4"></video>
+            <video id="fathomDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="https://smartauger-media.s3.amazonaws.com/videos/Fathom.mp4" type="video/mp4"></video>
             <button class="video-play-btn" id="fathomPlayBtn">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><polygon points="12,8 26,16 12,24" fill="#00e5cc"/></svg>
             </button>
@@ -1944,7 +1944,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
               <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM &mdash; Ground Radar Anomaly &amp; Void Engine (GRAVE)</span>
               <span style="font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; background:rgba(0,229,204,0.1); border:1px solid rgba(0,229,204,0.25); border-radius:4px; padding:3px 10px;">Defense</span>
             </div>
-            <video id="graveDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="Grave.mp4" type="video/mp4"></video>
+            <video id="graveDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="https://smartauger-media.s3.amazonaws.com/videos/Grave.mp4" type="video/mp4"></video>
             <button class="video-play-btn" id="gravePlayBtn">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><polygon points="12,8 26,16 12,24" fill="#00e5cc"/></svg>
             </button>
@@ -1974,7 +1974,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
               <span style="font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:#fff; letter-spacing:0.5px;">FATHOM &mdash; Arctic Terrain Intelligence via Multi-Sensor Unified Sensing</span>
               <span style="font-size:10px; font-weight:700; color:#00e5cc; letter-spacing:1.5px; text-transform:uppercase; background:rgba(0,229,204,0.1); border:1px solid rgba(0,229,204,0.25); border-radius:4px; padding:3px 10px;">Defense</span>
             </div>
-            <video id="artimusDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="ARTIMUS.mp4" type="video/mp4"></video>
+            <video id="artimusDemoVideo" style="width:100%; aspect-ratio:16/9; display:block; background:#000;" preload="auto"><source src="https://smartauger-media.s3.amazonaws.com/videos/ARTIMUS.mp4" type="video/mp4"></video>
             <button class="video-play-btn" id="artimusPlayBtn">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><polygon points="12,8 26,16 12,24" fill="#00e5cc"/></svg>
             </button>
@@ -7284,7 +7284,7 @@ function forceArtimusDemo() {
   msg.style.display = 'none';
   iframe.style.display = 'block';
   closeBtn.style.display = 'block';
-  iframe.src = 'ARTIMUS_demo.html?v=' + Date.now();
+  iframe.src = 'https://smartauger-media.s3.amazonaws.com/demos/ARTIMUS_demo.html?v=' + Date.now();
   artimusApplyScale();
   window.addEventListener('resize', artimusApplyScale);
 }
@@ -7311,7 +7311,7 @@ function openArtimusDemo() {
   msg.style.display = 'none';
   iframe.style.display = 'block';
   closeBtn.style.display = 'block';
-  iframe.src = 'ARTIMUS_demo.html?v=' + Date.now();
+  iframe.src = 'https://smartauger-media.s3.amazonaws.com/demos/ARTIMUS_demo.html?v=' + Date.now();
   artimusApplyScale();
   window.addEventListener('resize', artimusApplyScale);
 }
