@@ -546,6 +546,14 @@
     color: rgba(255,255,255,0.4);
     letter-spacing: 0.5px;
   }
+  .nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   .nav-right {
     display: flex;
     align-items: center;
@@ -4345,118 +4353,46 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 })();
 </script>
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 11 — OHIO TEAM (LIGHT)
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide light" data-slide="8">
-  <div class="grid-bg light-grid"></div>
-  <div class="accent-bar" style="top:80px; height:60px;"></div>
-
-  <div class="slide-inner">
-  <div class="build" data-delay="200">
-    <div class="headline" style="font-size:40px; font-weight:800; color:var(--dark-text);">
-      Ohio isn't just where we're from.<br>It's where we're building <span class="cyan-dim">the future of underground infrastructure.</span>
-    </div>
-  </div>
-
-  <div class="row mt-32 gap-48">
-    <!-- Ohio map placeholder -->
-    <div class="col build-left" data-delay="500" style="max-width:400px;">
-      <div class="placeholder" style="height:260px; position:relative;">
-        <span>OHIO MAP &mdash; AKRON / CLEVELAND HQ</span>
-        <div style="position:absolute; top:40%; left:55%; width:20px; height:20px; background:var(--cyan); border-radius:50%; box-shadow:0 0 15px rgba(0,212,200,0.5);"></div>
-      </div>
-      <div class="mt-16" style="display:flex; flex-direction:column; gap:6px;">
-        <span class="muted" style="font-size:22px;">&rarr; Italy (ItalGas)</span>
-        <span class="muted" style="font-size:22px;">&rarr; California (CalTrans)</span>
-        <span class="muted" style="font-size:22px;">&rarr; Texas (TxDOT)</span>
-      </div>
-    </div>
-
-    <!-- Stats + team -->
-    <div class="col">
-      <div style="display:flex; flex-direction:column; gap:12px;">
-        <div class="build" data-delay="800" style="display:flex; align-items:center; gap:12px;">
-          <div style="width:4px; height:40px; background:var(--cyan); border-radius:2px;"></div>
-          <span class="syne" style="font-size:22px; font-weight:700; color:var(--deep);">Ohio-based solutions team</span>
-        </div>
-        <div class="build" data-delay="1000" style="display:flex; align-items:center; gap:12px;">
-          <div style="width:4px; height:40px; background:var(--cyan); border-radius:2px;"></div>
-          <span class="syne" style="font-size:22px; font-weight:700; color:var(--deep);">Engineering, ML, Field Ops &mdash; all Ohio-hired</span>
-        </div>
-        <div class="build" data-delay="1200" style="display:flex; align-items:center; gap:12px;">
-          <div style="width:4px; height:40px; background:var(--cyan); border-radius:2px;"></div>
-          <span class="syne" style="font-size:22px; font-weight:700; color:var(--deep);">Growing local job creation</span>
-        </div>
-      </div>
-
-      <div class="build mt-32" data-delay="1400">
-        <div class="mono muted mb-16" style="font-size:22px; letter-spacing:2px;">TEAM STRUCTURE</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <div class="card" style="padding:8px 16px; font-size:19px; color:var(--dark-text);">Engineering</div>
-          <div class="card" style="padding:8px 16px; font-size:19px; color:var(--dark-text);">AI / ML</div>
-          <div class="card" style="padding:8px 16px; font-size:19px; color:var(--dark-text);">Field Solutions</div>
-          <div class="card" style="padding:8px 16px; font-size:19px; color:var(--dark-text);">Business Dev</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="build mt-32 text-center" data-delay="1700">
-    <div class="syne cyan-dim" style="font-size:22px; font-weight:700;">
-      Your investment stays in Ohio. Our work reaches the world.
-    </div>
-  </div>
-  </div>
-</section>
+<!-- OHIO TEAM SLIDE REMOVED -->
 
 
 <!-- ══════════════════════════════════════════════════════════
      SLIDE — FATHOM MISSION STATEMENT
      ══════════════════════════════════════════════════════════ -->
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 9 — MISSION STATEMENT (REDESIGNED)
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide dark" data-slide="9" style="background:#0A1628 !important;">
+<section class="slide dark" data-slide="9" style="background:#0A1628 !important; display:flex; align-items:center; justify-content:center;">
   <div class="grid-bg" style="opacity:0.06;"></div>
 
-  <div class="slide-inner" style="justify-content:center; align-items:center; text-align:center; gap:0;">
+  <div class="slide-inner" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:0;">
 
-    <!-- Hero statement -->
     <div class="build" data-delay="200" style="max-width:960px;">
       <div style="font-family:'Inter',sans-serif; font-size:42px; font-weight:800; line-height:1.15; color:#00D4C8;">
         We are building the operating system<br>for subsurface intelligence.
       </div>
     </div>
 
-    <!-- Supporting text -->
     <div class="build" data-delay="500" style="max-width:800px; margin-top:28px;">
       <div style="font-size:20px; font-weight:400; color:#F0F4FF; line-height:1.5;">
         The platform every sensor plugs into, in every domain that depends on what lies beneath.
       </div>
     </div>
 
-    <!-- Divider -->
     <div class="build" data-delay="700" style="margin-top:32px;">
       <div style="width:80px; height:2px; background:#00D4C8; margin:0 auto;"></div>
     </div>
 
-    <!-- Beat 2 -->
     <div class="build" data-delay="900" style="max-width:800px; margin-top:32px;">
       <div style="font-size:18px; font-weight:400; color:#F0F4FF; line-height:1.5;">
         Decades of manual process. We are automating it.
       </div>
     </div>
 
-    <!-- Beat 3 -->
     <div class="build" data-delay="1100" style="max-width:800px; margin-top:24px;">
       <div style="font-size:22px; font-weight:700; color:#F0F4FF; line-height:1.4;">
         The industry built services. We built a platform.<br>Your sensor. Your data. Your decision.
       </div>
     </div>
 
-    <!-- Signature -->
-    <div class="build" data-delay="1400" style="margin-top:48px;">
+    <div class="build" data-delay="1400" style="margin-top:48px; max-width:800px;">
       <div style="font-size:10px; font-weight:500; color:#8899BB; text-transform:uppercase; letter-spacing:3px;">
         FATHOM &mdash; Autonomous Subsurface Intelligence
       </div>
@@ -4590,6 +4526,234 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
 
 <!-- ══════════════════════════════════════════════════════════
+     SLIDE — FATHOM ROADMAP v2: TIMELINE + PHASE CARDS
+     ══════════════════════════════════════════════════════════ -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+  /* Timeline */
+  .rm2-tl { display:flex; align-items:flex-start; justify-content:space-between; position:relative; padding:0 20px; margin:0 0 20px; }
+  .rm2-line { position:absolute; top:9px; left:50px; right:50px; height:3px; background:#1E2D40; z-index:0; }
+  .rm2-line-fill { height:100%; width:0%; background:linear-gradient(90deg,#00D4B4,#00D4B450); border-radius:2px; transition:width 1.4s cubic-bezier(0.16,1,0.3,1); }
+  .rm2-node { position:relative; z-index:1; text-align:center; cursor:pointer; opacity:0; transform:scale(0.6); transition:all 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .rm2-node.visible { opacity:1; transform:scale(1); }
+  .rm2-dot { width:18px; height:18px; border-radius:50%; border:2px solid #00D4B4; background:#1E2D40; margin:0 auto 6px; transition:all 0.3s; }
+  .rm2-node.active .rm2-dot { background:#00D4B4; animation:rm2Pulse 2.5s ease-in-out infinite; }
+  .rm2-node.amber .rm2-dot { border-color:#F59E0B; background:#F59E0B30; }
+  .rm2-node.future .rm2-dot { background:transparent; }
+  .rm2-node:hover .rm2-dot { transform:scale(1.25); }
+  .rm2-lbl { font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#F0F4FF; }
+  .rm2-sub { font-family:'DM Sans',sans-serif; font-size:8px; color:#8892A4; margin-top:1px; max-width:90px; margin-left:auto; margin-right:auto; }
+  @keyframes rm2Pulse { 0%,100%{box-shadow:0 0 8px rgba(0,212,180,0.3)} 50%{box-shadow:0 0 22px rgba(0,212,180,0.65)} }
+
+  /* Phase cards */
+  .rm2-cards { display:flex; gap:12px; flex:1; min-height:0; }
+  .rm2-card { flex:1; background:#111827; border-radius:10px; padding:14px 16px; display:flex; flex-direction:column; overflow-y:auto; border-left:3px solid #1E2D40; opacity:0; transform:translateY(16px); transition:all 0.5s ease; }
+  .rm2-card.visible { opacity:1; transform:translateY(0); }
+  .rm2-card.phase1 { border-left-color:#00D4B4; border:1px solid #00D4B440; border-left:3px solid #00D4B4; }
+  .rm2-badge2 { display:inline-block; font-family:'Space Grotesk',sans-serif; font-size:8px; font-weight:700; letter-spacing:1.5px; padding:2px 8px; border-radius:12px; margin-bottom:6px; width:fit-content; }
+  .rm2-badge2.now { background:#00D4B420; color:#00D4B4; border:1px solid #00D4B440; }
+  .rm2-badge2.later { background:#1E2D40; color:#8892A4; }
+  .rm2-ctitle { font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#F0F4FF; }
+  .rm2-ctime { font-family:'DM Sans',sans-serif; font-size:9px; color:#8892A4; margin:2px 0 8px; }
+  .rm2-bullets { list-style:none; padding:0; margin:0; }
+  .rm2-bullets li { font-family:'DM Sans',sans-serif; font-size:10px; color:#8892A4; line-height:1.5; padding:2px 0 2px 12px; position:relative; }
+  .rm2-bullets li::before { content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:#00D4B460; }
+
+  /* Catalyst callout */
+  .rm2-catalyst { background:#0D2137; border-left:3px solid #F59E0B; border-radius:6px; padding:8px 10px; margin-top:8px; animation:rm2CatPulse 3s ease-in-out infinite; }
+  .rm2-catalyst-title { font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; color:#F59E0B; letter-spacing:1px; margin-bottom:3px; }
+  .rm2-catalyst-body { font-family:'DM Sans',sans-serif; font-size:9px; color:#8892A4; line-height:1.5; }
+  @keyframes rm2CatPulse { 0%,100%{border-left-color:#F59E0B} 50%{border-left-color:#F59E0B80} }
+
+  /* Revenue potential block */
+  .rm2-rev { background:#0D2137; border-left:3px solid #00D4B4; border-radius:6px; padding:8px 10px; margin-top:auto; padding-top:10px; }
+  .rm2-rev-label { font-family:'Space Grotesk',sans-serif; font-size:7px; font-weight:700; color:#00D4B480; letter-spacing:1.5px; }
+  .rm2-rev-val { font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:700; color:#22C55E; margin:2px 0; }
+  .rm2-rev-sub { font-family:'DM Sans',sans-serif; font-size:8px; color:#8892A4; }
+
+  /* Tags */
+  .rm2-tags { display:flex; flex-wrap:wrap; gap:3px; margin-top:8px; }
+  .rm2-tag { font-family:'DM Sans',sans-serif; font-size:7px; color:#8892A4; background:#1E2D40; padding:2px 6px; border-radius:8px; }
+
+  /* Revenue table */
+  .rm2-rtbl { width:100%; border-collapse:separate; border-spacing:0; font-family:'DM Sans',sans-serif; }
+  .rm2-rtbl thead th { font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; color:#00D4B4; text-transform:uppercase; letter-spacing:1.5px; padding:10px 14px; text-align:left; border-bottom:2px solid #00D4B430; }
+  .rm2-rtbl tbody tr { opacity:0; transform:translateY(8px); transition:all 0.4s ease; }
+  .rm2-rtbl tbody tr.vis { opacity:1; transform:translateY(0); }
+  .rm2-rtbl tbody td { padding:10px 14px; font-size:11px; color:#F0F4FF; border-bottom:1px solid #1E2D40; }
+  .rm2-rtbl tbody td:nth-child(2) { color:#8892A4; }
+  .rm2-rtbl tbody td:nth-child(3) { color:#8892A4; }
+  .rm2-rtbl tr.rm2-amber { border-left:3px solid #F59E0B; background:#F59E0B08; }
+  .rm2-rtbl tr.rm2-amber td:first-child { color:#F59E0B; font-weight:600; }
+  .rm2-tbl-wrap { background:#111827; border:1px solid #1E2D40; border-radius:10px; overflow:hidden; }
+</style>
+
+<section class="slide dark" data-slide="10" style="background:#0A0F1E !important;">
+  <div class="grid-bg"></div>
+  <div class="slide-inner" style="gap:10px; padding-top:24px; padding-bottom:20px;">
+
+  <!-- Header -->
+  <div class="build" data-delay="100">
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; color:#F0F4FF; line-height:1.2;">
+      24-Month Roadmap. <span style="color:#00D4B4;">The product is already built. This raise deploys it.</span>
+    </div>
+    <div style="font-family:'DM Sans',sans-serif; font-size:11px; color:#8892A4; margin-top:4px;">
+      FATHOM Beta goes live June 2026 — before the raise closes. Investors are funding scale, not development.
+    </div>
+  </div>
+
+  <!-- Timeline (5 nodes) -->
+  <div class="build rm2-tl" data-delay="300" id="rm2Timeline">
+    <div class="rm2-line"><div class="rm2-line-fill" id="rm2Fill"></div></div>
+    <div class="rm2-node active" data-idx="0"><div class="rm2-dot"></div><div class="rm2-lbl">June 2026</div><div class="rm2-sub">FATHOM Beta Live</div></div>
+    <div class="rm2-node amber" data-idx="1"><div class="rm2-dot"></div><div class="rm2-lbl">July 2026</div><div class="rm2-sub">Raise Closes</div></div>
+    <div class="rm2-node future" data-idx="2"><div class="rm2-dot"></div><div class="rm2-lbl">Q1 2027</div><div class="rm2-sub">FATHOM Cloud Launch</div></div>
+    <div class="rm2-node future" data-idx="3"><div class="rm2-dot"></div><div class="rm2-lbl">Q2 2027</div><div class="rm2-sub">Defense Pipeline Active</div></div>
+    <div class="rm2-node future" data-idx="4"><div class="rm2-dot"></div><div class="rm2-lbl">Q2 2028</div><div class="rm2-sub">Scale and Breakout</div></div>
+  </div>
+
+  <!-- Phase Cards (3, all expanded) -->
+  <div class="rm2-cards" id="rm2Cards">
+
+    <!-- Phase 1 -->
+    <div class="rm2-card phase1">
+      <div class="rm2-badge2 now">ACTIVE NOW</div>
+      <div class="rm2-ctitle">Build and Deploy</div>
+      <div class="rm2-ctime">July 2026 to Q1 2027</div>
+      <ul class="rm2-bullets">
+        <li>FATHOM Beta live before raise closes - pilots begin immediately</li>
+        <li>4 to 6 paid pilot programs with entities like WSB, CalTrans, and Cansel</li>
+        <li>Pilots clear client data backlogs, generating $50K to $150K per engagement</li>
+        <li>GRAVE software in Alpha development</li>
+        <li>ML additions finalized: Satellite Change Detection, Point Cloud Processing, Automated Workflows, NLP Chat</li>
+        <li>First SBIR submissions filed</li>
+        <li>GroundScope rolling contract revenue begins at commercialization (July/August 2026)</li>
+      </ul>
+      <div class="rm2-catalyst">
+        <div class="rm2-catalyst-title">NEAR-TERM CATALYST</div>
+        <div class="rm2-catalyst-body">ARTIMUS award selection is anticipated mid to late June 2026. A successful award represents up to $1.3M directly to SmartAuger Technologies and would accelerate the defense timeline significantly ahead of plan. Investors closing before that date are positioned to benefit.</div>
+      </div>
+      <div class="rm2-rev">
+        <div class="rm2-rev-label">PHASE 1 REVENUE POTENTIAL</div>
+        <div class="rm2-rev-val">$200K to $900K in pilot contracts</div>
+        <div class="rm2-rev-sub">4 to 6 pilots at $50K to $150K each - before a single SaaS subscription.</div>
+      </div>
+      <div class="rm2-tags">
+        <span class="rm2-tag">FATHOM Beta</span><span class="rm2-tag">GRAVE Alpha</span><span class="rm2-tag">Pilot Contracts</span><span class="rm2-tag">SBIR Filed</span><span class="rm2-tag">GroundScope Contract</span>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="rm2-card">
+      <div class="rm2-badge2 later">PHASE 2</div>
+      <div class="rm2-ctitle">Launch and Penetrate</div>
+      <div class="rm2-ctime">Q1 2027 to Q3 2027</div>
+      <ul class="rm2-bullets">
+        <li>FATHOM Cloud launches to paying users across individual, SMB, and enterprise tiers</li>
+        <li>Pilot clients from Phase 1 convert to SaaS subscriptions</li>
+        <li>GRAVE sensor hardware prototyping begins, prototypes enter field testing</li>
+        <li>Subsurface intelligence outputs feed into active defense autonomy platform partnership</li>
+        <li>ARTIMUS and ERDC proposals submitted to Army SBIR programs</li>
+        <li>Target: 30 to 50 paying clients by end of phase</li>
+      </ul>
+      <div class="rm2-rev">
+        <div class="rm2-rev-label">PHASE 2 REVENUE POTENTIAL</div>
+        <div class="rm2-rev-val">First SaaS ARR. Defense proposal pipeline active.</div>
+        <div class="rm2-rev-sub">Pilot relationships convert to recurring revenue. DoD submissions in review.</div>
+      </div>
+      <div class="rm2-tags">
+        <span class="rm2-tag">FATHOM Launch</span><span class="rm2-tag">GRAVE Field Testing</span><span class="rm2-tag">ARTIMUS Submitted</span><span class="rm2-tag">DoD Integration</span><span class="rm2-tag">SaaS ARR</span>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="rm2-card">
+      <div class="rm2-badge2 later">PHASE 3</div>
+      <div class="rm2-ctitle">Scale and Breakout</div>
+      <div class="rm2-ctime">Q4 2027 to Q2 2028</div>
+      <ul class="rm2-bullets">
+        <li>FATHOM expands into forensic engineering, borehole analysis, and full subsurface mapping</li>
+        <li>Full-scale DoD contract pursuit: SBIR Phase I awards, OTA vehicles, IDIQ pipeline</li>
+        <li>100 or more active clients</li>
+        <li>$2M or more ARR</li>
+        <li>Series A fundraise positioned</li>
+      </ul>
+      <div class="rm2-rev">
+        <div class="rm2-rev-label">PHASE 3 REVENUE POTENTIAL</div>
+        <div class="rm2-rev-val">$2M+ ARR. First DoD contract awards.</div>
+        <div class="rm2-rev-sub">Multi-market SaaS traction plus defense contract pipeline delivering.</div>
+      </div>
+      <div class="rm2-tags">
+        <span class="rm2-tag">Forensic Engineering</span><span class="rm2-tag">Borehole</span><span class="rm2-tag">SBIR Awards</span><span class="rm2-tag">OTA</span><span class="rm2-tag">IDIQ</span><span class="rm2-tag">Series A</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="build" data-delay="800" style="text-align:center; padding-top:6px;">
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700; color:#00D4B4; letter-spacing:0.5px;">
+      Same AI engine. Three phases. Every dataset deepens the moat.
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var s11 = document.querySelector('[data-slide="10"]');
+  var rm2Animated = false;
+
+  function animateRM2() {
+    if (rm2Animated) return;
+    rm2Animated = true;
+    // Animate line
+    var fill = document.getElementById('rm2Fill');
+    if (fill) setTimeout(function() { fill.style.width = '20%'; }, 200);
+    // Pop in nodes sequentially
+    var nodes = s11.querySelectorAll('.rm2-node');
+    nodes.forEach(function(n, i) {
+      setTimeout(function() { n.classList.add('visible'); }, 400 + i * 180);
+    });
+    // Slide in cards
+    var cards = s11.querySelectorAll('.rm2-card');
+    cards.forEach(function(c, i) {
+      setTimeout(function() { c.classList.add('visible'); }, 900 + i * 150);
+    });
+  }
+
+  // Node click highlights
+  s11.querySelectorAll('.rm2-node').forEach(function(n) {
+    n.addEventListener('click', function() {
+      var idx = parseInt(n.getAttribute('data-idx'));
+      var cards = s11.querySelectorAll('.rm2-card');
+      // Map nodes to cards: 0,1->card0, 2,3->card1, 4->card2
+      var ci = idx <= 1 ? 0 : idx <= 3 ? 1 : 2;
+      cards.forEach(function(c, i) {
+        c.style.borderColor = i === ci ? '#00D4B4' : '#1E2D40';
+        c.style.boxShadow = i === ci ? '0 0 20px rgba(0,212,180,0.15)' : 'none';
+      });
+    });
+  });
+
+  var obs11 = new MutationObserver(function(muts) {
+    muts.forEach(function(m) {
+      if (m.target.classList.contains('active')) { setTimeout(animateRM2, 300); }
+      else {
+        rm2Animated = false;
+        var f = document.getElementById('rm2Fill'); if(f) f.style.width='0%';
+        s11.querySelectorAll('.rm2-node').forEach(function(n){n.classList.remove('visible')});
+        s11.querySelectorAll('.rm2-card').forEach(function(c){c.classList.remove('visible')});
+      }
+    });
+  });
+  obs11.observe(s11, { attributes:true, attributeFilter:['class'] });
+})();
+</script>
+
+
+<!-- ══════════════════════════════════════════════════════════
      SLIDE 13 — FINANCIALS (FATHOM CLOUD REVENUE MODEL)
      ══════════════════════════════════════════════════════════ -->
 <style>
@@ -4677,7 +4841,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   .rv-metric-label { font-size:10px; color:var(--muted); margin-top:2px; }
 </style>
 
-<section class="slide dark" data-slide="10">
+<section class="slide dark" data-slide="11">
   <div class="grid-bg"></div>
   <div class="accent-bar" style="top:80px; height:60px;"></div>
 
@@ -4923,7 +5087,7 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   });
 
   // Animate bars + counters on slide activation
-  var slide17 = document.querySelector('[data-slide="10"]');
+  var slide17 = document.querySelector('[data-slide="11"]');
   var animated17 = false;
 
   function animateBars() {
@@ -5007,234 +5171,6 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     });
   });
   obs17.observe(slide17, { attributes:true, attributeFilter:['class'] });
-})();
-</script>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE — FATHOM ROADMAP v2: TIMELINE + PHASE CARDS
-     ══════════════════════════════════════════════════════════ -->
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
-
-  /* Timeline */
-  .rm2-tl { display:flex; align-items:flex-start; justify-content:space-between; position:relative; padding:0 20px; margin:0 0 20px; }
-  .rm2-line { position:absolute; top:9px; left:50px; right:50px; height:3px; background:#1E2D40; z-index:0; }
-  .rm2-line-fill { height:100%; width:0%; background:linear-gradient(90deg,#00D4B4,#00D4B450); border-radius:2px; transition:width 1.4s cubic-bezier(0.16,1,0.3,1); }
-  .rm2-node { position:relative; z-index:1; text-align:center; cursor:pointer; opacity:0; transform:scale(0.6); transition:all 0.4s cubic-bezier(0.16,1,0.3,1); }
-  .rm2-node.visible { opacity:1; transform:scale(1); }
-  .rm2-dot { width:18px; height:18px; border-radius:50%; border:2px solid #00D4B4; background:#1E2D40; margin:0 auto 6px; transition:all 0.3s; }
-  .rm2-node.active .rm2-dot { background:#00D4B4; animation:rm2Pulse 2.5s ease-in-out infinite; }
-  .rm2-node.amber .rm2-dot { border-color:#F59E0B; background:#F59E0B30; }
-  .rm2-node.future .rm2-dot { background:transparent; }
-  .rm2-node:hover .rm2-dot { transform:scale(1.25); }
-  .rm2-lbl { font-family:'Space Grotesk',sans-serif; font-size:12px; font-weight:700; color:#F0F4FF; }
-  .rm2-sub { font-family:'DM Sans',sans-serif; font-size:8px; color:#8892A4; margin-top:1px; max-width:90px; margin-left:auto; margin-right:auto; }
-  @keyframes rm2Pulse { 0%,100%{box-shadow:0 0 8px rgba(0,212,180,0.3)} 50%{box-shadow:0 0 22px rgba(0,212,180,0.65)} }
-
-  /* Phase cards */
-  .rm2-cards { display:flex; gap:12px; flex:1; min-height:0; }
-  .rm2-card { flex:1; background:#111827; border-radius:10px; padding:14px 16px; display:flex; flex-direction:column; overflow-y:auto; border-left:3px solid #1E2D40; opacity:0; transform:translateY(16px); transition:all 0.5s ease; }
-  .rm2-card.visible { opacity:1; transform:translateY(0); }
-  .rm2-card.phase1 { border-left-color:#00D4B4; border:1px solid #00D4B440; border-left:3px solid #00D4B4; }
-  .rm2-badge2 { display:inline-block; font-family:'Space Grotesk',sans-serif; font-size:8px; font-weight:700; letter-spacing:1.5px; padding:2px 8px; border-radius:12px; margin-bottom:6px; width:fit-content; }
-  .rm2-badge2.now { background:#00D4B420; color:#00D4B4; border:1px solid #00D4B440; }
-  .rm2-badge2.later { background:#1E2D40; color:#8892A4; }
-  .rm2-ctitle { font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:#F0F4FF; }
-  .rm2-ctime { font-family:'DM Sans',sans-serif; font-size:9px; color:#8892A4; margin:2px 0 8px; }
-  .rm2-bullets { list-style:none; padding:0; margin:0; }
-  .rm2-bullets li { font-family:'DM Sans',sans-serif; font-size:10px; color:#8892A4; line-height:1.5; padding:2px 0 2px 12px; position:relative; }
-  .rm2-bullets li::before { content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:#00D4B460; }
-
-  /* Catalyst callout */
-  .rm2-catalyst { background:#0D2137; border-left:3px solid #F59E0B; border-radius:6px; padding:8px 10px; margin-top:8px; animation:rm2CatPulse 3s ease-in-out infinite; }
-  .rm2-catalyst-title { font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; color:#F59E0B; letter-spacing:1px; margin-bottom:3px; }
-  .rm2-catalyst-body { font-family:'DM Sans',sans-serif; font-size:9px; color:#8892A4; line-height:1.5; }
-  @keyframes rm2CatPulse { 0%,100%{border-left-color:#F59E0B} 50%{border-left-color:#F59E0B80} }
-
-  /* Revenue potential block */
-  .rm2-rev { background:#0D2137; border-left:3px solid #00D4B4; border-radius:6px; padding:8px 10px; margin-top:auto; padding-top:10px; }
-  .rm2-rev-label { font-family:'Space Grotesk',sans-serif; font-size:7px; font-weight:700; color:#00D4B480; letter-spacing:1.5px; }
-  .rm2-rev-val { font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:700; color:#22C55E; margin:2px 0; }
-  .rm2-rev-sub { font-family:'DM Sans',sans-serif; font-size:8px; color:#8892A4; }
-
-  /* Tags */
-  .rm2-tags { display:flex; flex-wrap:wrap; gap:3px; margin-top:8px; }
-  .rm2-tag { font-family:'DM Sans',sans-serif; font-size:7px; color:#8892A4; background:#1E2D40; padding:2px 6px; border-radius:8px; }
-
-  /* Revenue table */
-  .rm2-rtbl { width:100%; border-collapse:separate; border-spacing:0; font-family:'DM Sans',sans-serif; }
-  .rm2-rtbl thead th { font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; color:#00D4B4; text-transform:uppercase; letter-spacing:1.5px; padding:10px 14px; text-align:left; border-bottom:2px solid #00D4B430; }
-  .rm2-rtbl tbody tr { opacity:0; transform:translateY(8px); transition:all 0.4s ease; }
-  .rm2-rtbl tbody tr.vis { opacity:1; transform:translateY(0); }
-  .rm2-rtbl tbody td { padding:10px 14px; font-size:11px; color:#F0F4FF; border-bottom:1px solid #1E2D40; }
-  .rm2-rtbl tbody td:nth-child(2) { color:#8892A4; }
-  .rm2-rtbl tbody td:nth-child(3) { color:#8892A4; }
-  .rm2-rtbl tr.rm2-amber { border-left:3px solid #F59E0B; background:#F59E0B08; }
-  .rm2-rtbl tr.rm2-amber td:first-child { color:#F59E0B; font-weight:600; }
-  .rm2-tbl-wrap { background:#111827; border:1px solid #1E2D40; border-radius:10px; overflow:hidden; }
-</style>
-
-<section class="slide dark" data-slide="11" style="background:#0A0F1E !important;">
-  <div class="grid-bg"></div>
-  <div class="slide-inner" style="gap:10px; padding-top:24px; padding-bottom:20px;">
-
-  <!-- Header -->
-  <div class="build" data-delay="100">
-    <div style="font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; color:#F0F4FF; line-height:1.2;">
-      24-Month Roadmap. <span style="color:#00D4B4;">The product is already built. This raise deploys it.</span>
-    </div>
-    <div style="font-family:'DM Sans',sans-serif; font-size:11px; color:#8892A4; margin-top:4px;">
-      FATHOM Beta goes live June 2026 — before the raise closes. Investors are funding scale, not development.
-    </div>
-  </div>
-
-  <!-- Timeline (5 nodes) -->
-  <div class="build rm2-tl" data-delay="300" id="rm2Timeline">
-    <div class="rm2-line"><div class="rm2-line-fill" id="rm2Fill"></div></div>
-    <div class="rm2-node active" data-idx="0"><div class="rm2-dot"></div><div class="rm2-lbl">June 2026</div><div class="rm2-sub">FATHOM Beta Live</div></div>
-    <div class="rm2-node amber" data-idx="1"><div class="rm2-dot"></div><div class="rm2-lbl">July 2026</div><div class="rm2-sub">Raise Closes</div></div>
-    <div class="rm2-node future" data-idx="2"><div class="rm2-dot"></div><div class="rm2-lbl">Q1 2027</div><div class="rm2-sub">FATHOM Cloud Launch</div></div>
-    <div class="rm2-node future" data-idx="3"><div class="rm2-dot"></div><div class="rm2-lbl">Q2 2027</div><div class="rm2-sub">Defense Pipeline Active</div></div>
-    <div class="rm2-node future" data-idx="4"><div class="rm2-dot"></div><div class="rm2-lbl">Q2 2028</div><div class="rm2-sub">Scale and Breakout</div></div>
-  </div>
-
-  <!-- Phase Cards (3, all expanded) -->
-  <div class="rm2-cards" id="rm2Cards">
-
-    <!-- Phase 1 -->
-    <div class="rm2-card phase1">
-      <div class="rm2-badge2 now">ACTIVE NOW</div>
-      <div class="rm2-ctitle">Build and Deploy</div>
-      <div class="rm2-ctime">July 2026 to Q1 2027</div>
-      <ul class="rm2-bullets">
-        <li>FATHOM Beta live before raise closes - pilots begin immediately</li>
-        <li>4 to 6 paid pilot programs with entities like WSB, CalTrans, and Cansel</li>
-        <li>Pilots clear client data backlogs, generating $50K to $150K per engagement</li>
-        <li>GRAVE software in Alpha development</li>
-        <li>ML additions finalized: Satellite Change Detection, Point Cloud Processing, Automated Workflows, NLP Chat</li>
-        <li>First SBIR submissions filed</li>
-        <li>GroundScope rolling contract revenue begins at commercialization (July/August 2026)</li>
-      </ul>
-      <div class="rm2-catalyst">
-        <div class="rm2-catalyst-title">NEAR-TERM CATALYST</div>
-        <div class="rm2-catalyst-body">ARTIMUS award selection is anticipated mid to late June 2026. A successful award represents up to $1.3M directly to SmartAuger Technologies and would accelerate the defense timeline significantly ahead of plan. Investors closing before that date are positioned to benefit.</div>
-      </div>
-      <div class="rm2-rev">
-        <div class="rm2-rev-label">PHASE 1 REVENUE POTENTIAL</div>
-        <div class="rm2-rev-val">$200K to $900K in pilot contracts</div>
-        <div class="rm2-rev-sub">4 to 6 pilots at $50K to $150K each - before a single SaaS subscription.</div>
-      </div>
-      <div class="rm2-tags">
-        <span class="rm2-tag">FATHOM Beta</span><span class="rm2-tag">GRAVE Alpha</span><span class="rm2-tag">Pilot Contracts</span><span class="rm2-tag">SBIR Filed</span><span class="rm2-tag">GroundScope Contract</span>
-      </div>
-    </div>
-
-    <!-- Phase 2 -->
-    <div class="rm2-card">
-      <div class="rm2-badge2 later">PHASE 2</div>
-      <div class="rm2-ctitle">Launch and Penetrate</div>
-      <div class="rm2-ctime">Q1 2027 to Q3 2027</div>
-      <ul class="rm2-bullets">
-        <li>FATHOM Cloud launches to paying users across individual, SMB, and enterprise tiers</li>
-        <li>Pilot clients from Phase 1 convert to SaaS subscriptions</li>
-        <li>GRAVE sensor hardware prototyping begins, prototypes enter field testing</li>
-        <li>Subsurface intelligence outputs feed into active defense autonomy platform partnership</li>
-        <li>ARTIMUS and ERDC proposals submitted to Army SBIR programs</li>
-        <li>Target: 30 to 50 paying clients by end of phase</li>
-      </ul>
-      <div class="rm2-rev">
-        <div class="rm2-rev-label">PHASE 2 REVENUE POTENTIAL</div>
-        <div class="rm2-rev-val">First SaaS ARR. Defense proposal pipeline active.</div>
-        <div class="rm2-rev-sub">Pilot relationships convert to recurring revenue. DoD submissions in review.</div>
-      </div>
-      <div class="rm2-tags">
-        <span class="rm2-tag">FATHOM Launch</span><span class="rm2-tag">GRAVE Field Testing</span><span class="rm2-tag">ARTIMUS Submitted</span><span class="rm2-tag">DoD Integration</span><span class="rm2-tag">SaaS ARR</span>
-      </div>
-    </div>
-
-    <!-- Phase 3 -->
-    <div class="rm2-card">
-      <div class="rm2-badge2 later">PHASE 3</div>
-      <div class="rm2-ctitle">Scale and Breakout</div>
-      <div class="rm2-ctime">Q4 2027 to Q2 2028</div>
-      <ul class="rm2-bullets">
-        <li>FATHOM expands into forensic engineering, borehole analysis, and full subsurface mapping</li>
-        <li>Full-scale DoD contract pursuit: SBIR Phase I awards, OTA vehicles, IDIQ pipeline</li>
-        <li>100 or more active clients</li>
-        <li>$2M or more ARR</li>
-        <li>Series A fundraise positioned</li>
-      </ul>
-      <div class="rm2-rev">
-        <div class="rm2-rev-label">PHASE 3 REVENUE POTENTIAL</div>
-        <div class="rm2-rev-val">$2M+ ARR. First DoD contract awards.</div>
-        <div class="rm2-rev-sub">Multi-market SaaS traction plus defense contract pipeline delivering.</div>
-      </div>
-      <div class="rm2-tags">
-        <span class="rm2-tag">Forensic Engineering</span><span class="rm2-tag">Borehole</span><span class="rm2-tag">SBIR Awards</span><span class="rm2-tag">OTA</span><span class="rm2-tag">IDIQ</span><span class="rm2-tag">Series A</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="build" data-delay="800" style="text-align:center; padding-top:6px;">
-    <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; font-weight:700; color:#00D4B4; letter-spacing:0.5px;">
-      Same AI engine. Three phases. Every dataset deepens the moat.
-    </div>
-  </div>
-
-  </div>
-</section>
-
-<script>
-(function() {
-  var s11 = document.querySelector('[data-slide="11"]');
-  var rm2Animated = false;
-
-  function animateRM2() {
-    if (rm2Animated) return;
-    rm2Animated = true;
-    // Animate line
-    var fill = document.getElementById('rm2Fill');
-    if (fill) setTimeout(function() { fill.style.width = '20%'; }, 200);
-    // Pop in nodes sequentially
-    var nodes = s11.querySelectorAll('.rm2-node');
-    nodes.forEach(function(n, i) {
-      setTimeout(function() { n.classList.add('visible'); }, 400 + i * 180);
-    });
-    // Slide in cards
-    var cards = s11.querySelectorAll('.rm2-card');
-    cards.forEach(function(c, i) {
-      setTimeout(function() { c.classList.add('visible'); }, 900 + i * 150);
-    });
-  }
-
-  // Node click highlights
-  s11.querySelectorAll('.rm2-node').forEach(function(n) {
-    n.addEventListener('click', function() {
-      var idx = parseInt(n.getAttribute('data-idx'));
-      var cards = s11.querySelectorAll('.rm2-card');
-      // Map nodes to cards: 0,1->card0, 2,3->card1, 4->card2
-      var ci = idx <= 1 ? 0 : idx <= 3 ? 1 : 2;
-      cards.forEach(function(c, i) {
-        c.style.borderColor = i === ci ? '#00D4B4' : '#1E2D40';
-        c.style.boxShadow = i === ci ? '0 0 20px rgba(0,212,180,0.15)' : 'none';
-      });
-    });
-  });
-
-  var obs11 = new MutationObserver(function(muts) {
-    muts.forEach(function(m) {
-      if (m.target.classList.contains('active')) { setTimeout(animateRM2, 300); }
-      else {
-        rm2Animated = false;
-        var f = document.getElementById('rm2Fill'); if(f) f.style.width='0%';
-        s11.querySelectorAll('.rm2-node').forEach(function(n){n.classList.remove('visible')});
-        s11.querySelectorAll('.rm2-card').forEach(function(c){c.classList.remove('visible')});
-      }
-    });
-  });
-  obs11.observe(s11, { attributes:true, attributeFilter:['class'] });
 })();
 </script>
 
@@ -5462,12 +5398,12 @@ if (sessionStorage.getItem('sa_auth') === '1') {
   <!-- HERO — MASSIVE -->
   <div class="text-center build-scale" data-delay="200">
     <div class="ask-hero-glow" style="font-family:'Inter',sans-serif; font-size:clamp(72px,9vw,110px); font-weight:900; color:var(--cyan); line-height:0.95; letter-spacing:-3px;">
-      RAISING <span id="askHeroAmt">$6M</span> EQUITY
+      RAISING <span id="askHeroAmt">$6M</span>
     </div>
     <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-top:14px;">
       <span style="font-size:18px; font-weight:700; color:var(--white); letter-spacing:3px;">20% EQUITY</span>
       <span style="width:6px; height:6px; border-radius:50%; background:var(--cyan);"></span>
-      <span style="font-size:18px; font-weight:700; color:var(--white); letter-spacing:3px;">$30M PRE-MONEY</span>
+      <span style="font-size:18px; font-weight:700; color:var(--white); letter-spacing:3px;">$24M PRE-MONEY</span>
     </div>
   </div>
 
@@ -5573,8 +5509,8 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     <p style="font-size:14px; color:var(--white);">
       Tyler &nbsp;&middot;&nbsp; CTO &amp; Founder &nbsp;&middot;&nbsp; SmartAuger Technologies
     </p>
-    <p class="mono cyan mt-16" style="font-size:13px; letter-spacing:2px; opacity:0.4;">
-      // The ground holds the answers. We built the system to find them. //
+    <p class="cyan mt-16" style="font-family:'Inter',sans-serif; font-size:16px; font-weight:700; letter-spacing:1px;">
+      We are building the system to find them.
     </p>
   </div>
 
@@ -5764,6 +5700,99 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════════════════════════
+     APPENDIX — DEFENSE & UAV (ARTIMUS)
+     ══════════════════════════════════════════════════════════ -->
+<section class="slide dark" data-slide="20" style="background:url('ARTIMUSBGOF.png') center center / cover no-repeat;">
+  <div style="position:absolute; inset:0; background:rgba(13,31,60,0.8); z-index:0;"></div>
+  <div style="position:absolute; top:20px; left:32px; z-index:5; display:flex; align-items:center; gap:12px;">
+    <span style="font-family:'Consolas','Inter',monospace; font-size:11px; font-weight:700; color:#00e5cc; letter-spacing:2px; text-transform:uppercase;">Appendix</span>
+    <span style="font-size:11px; color:rgba(255,255,255,0.2);">|</span>
+    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">ARTIMUS &mdash; Defense &amp; UAV</span>
+  </div>
+  <div class="accent-bar" style="top:80px; height:60px;"></div>
+
+  <div class="slide-inner" style="position:relative; z-index:1;">
+  <style>
+    @keyframes s12-wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      15% { transform: rotate(-1.5deg) translateX(-2px); }
+      30% { transform: rotate(1.2deg) translateX(2px); }
+      45% { transform: rotate(-0.8deg); }
+      55% { transform: rotate(0.5deg) translateX(1px); }
+      70% { transform: rotate(0deg); }
+    }
+    .artimus-case {
+      animation: s12-wiggle 3s ease-in-out infinite;
+      cursor: pointer;
+      transition: filter 0.3s;
+    }
+    .artimus-case:hover {
+      filter: drop-shadow(0 36px 72px rgba(0,0,0,0.7)) drop-shadow(0 12px 24px rgba(0,0,0,0.5)) drop-shadow(0 0 20px rgba(0,212,255,0.5));
+    }
+  </style>
+  <div class="build" data-delay="200" style="display:flex; gap:40px; align-items:flex-start;">
+    <div style="flex:1;">
+      <img src="artimuswhite.png" style="height:70px; width:auto; margin-bottom:6px;">
+      <div class="mono" style="font-size:11px; letter-spacing:2px; color:var(--cyan); text-transform:uppercase; white-space:nowrap;">Arctic Terrain Intelligence via Multi-Sensor Unified Sensing</div>
+      <div class="headline" style="font-size:38px; font-weight:800; margin-top:16px;">
+        Defense-grade sensing. <span class="cyan">Proposed for the Arctic.</span>
+      </div>
+      <div style="font-size:17px; color:rgba(255,255,255,0.7); margin-top:8px; max-width:700px; line-height:1.6;">
+        Arctic terrain can kill a convoy before the enemy does. SmartAuger Technologies and OSU&rsquo;s ElectroScience Laboratory have jointly proposed ARTIMUS to answer the questions warfighters need most &mdash; can my vehicles cross this terrain, is it safe for troops on foot, what&rsquo;s the best route from here to there? If awarded, ARTIMUS delivers a full-stack UAV sensor platform and ML-driven RAG engine that turns raw Arctic terrain data into actionable mobility intelligence &mdash; purpose-built for the warfighter, deployable in minutes.
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; flex:0 0 700px; padding-top:30px;">
+      <img src="ARTIMUS_CASE.png" class="artimus-case" style="height:220px; width:auto; filter:drop-shadow(0 36px 72px rgba(0,0,0,0.7)) drop-shadow(0 12px 24px rgba(0,0,0,0.5));" onclick="openArtimusDemo()">
+      <div class="syne cyan" style="font-size:14px; font-weight:700; letter-spacing:1px; cursor:pointer;" onclick="openArtimusDemo()">Click to Deploy Demo</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;">
+    <div class="card build" data-delay="500" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
+      <div class="card-accent"></div>
+      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">UAV &amp; RF Hardware</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Proposed hybrid UAV platform selection, payload mechanical engineering, and multi-sensor integration. Our plan converts OSU ElectroScience research into fielded RF hardware &mdash; with civilian commercialization rights retained. Defense funds the R&amp;D; we own the upside across a vast pipeline of commercial markets.</div>
+    </div>
+    <div class="card build" data-delay="700" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
+      <div class="card-accent"></div>
+      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">Data Uplink &amp; Encryption</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Designed for comms-denied, adversarial environments. Data will be encrypted at the edge and synced to cloud when bandwidth allows &mdash; targeting full DOD data and AI model assurance compliance, without sacrificing operational security.</div>
+    </div>
+    <div class="card build" data-delay="900" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
+      <div class="card-accent"></div>
+      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">ATAK &amp; Warfighter Interface</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">One button. The proposed system will enable fully autonomous route pathing, geophysical track assignment, and optimized flight coverage &mdash; delivered as a native ATAK plugin. Complex multi-sensor operations, mission-ready in seconds.</div>
+    </div>
+    <div class="card build" data-delay="1100" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
+      <div class="card-accent"></div>
+      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">Machine Learning &amp; RAG Intelligence</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Our proposed fusion engine will combine onboard RGB, GPR, and laser data with NASA ICESat-2, CRREL, NSIDC, Sentinel-2, and ArcticDEM into a single terrain intelligence layer. Vehicle and personnel weight will be factored into every mobility decision. No generic tool comes close to this planned capability.</div>
+    </div>
+  </div>
+
+  <div class="build" data-delay="1300" style="display:flex; align-items:center; justify-content:center; width:100%; margin-top:40px;">
+    <img src="Logosbar.png" style="height:auto; opacity:0.9;">
+  </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     APPENDIX — GRAVE SIMULATION DATA
+     ══════════════════════════════════════════════════════════ -->
+<section class="slide dark" data-slide="21" style="padding:0 !important; overflow:hidden;">
+  <div style="position:absolute; top:20px; left:32px; z-index:5; display:flex; align-items:center; gap:12px;">
+    <span style="font-family:'Consolas','Inter',monospace; font-size:11px; font-weight:700; color:#00e5cc; letter-spacing:2px; text-transform:uppercase;">Appendix</span>
+    <span style="font-size:11px; color:rgba(255,255,255,0.2);">|</span>
+    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">GRAVE-SIM-003 &mdash; Advanced Simulation Data</span>
+    <span style="font-size:9px; font-weight:700; color:#ff6b6b; letter-spacing:1px; text-transform:uppercase; background:rgba(255,107,107,0.1); border:1px solid rgba(255,107,107,0.2); border-radius:3px; padding:2px 8px;">Proprietary</span>
+  </div>
+  <iframe src="SIMULATION_RESULTS.html" style="width:100%; height:calc(100% - 44px); border:none; position:absolute; top:44px; left:0; right:0; bottom:0;"></iframe>
+</section>
+
 
 <section class="slide light" data-slide="15">
   <div class="slide-inner" style="align-items:flex-start; position:relative; z-index:2;">
@@ -6033,17 +6062,10 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 07 — DEPLOYMENTS (LIGHT)
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide light" data-slide="17">
-  <div class="grid-bg light-grid"></div>
-  <div class="accent-bar" style="top:80px; height:60px;"></div>
-
-  <div class="slide-inner">
-  <div class="build" data-delay="200">
-    <div class="headline" style="font-size:40px; font-weight:800; color:var(--dark-text);">
-      Trusted by infrastructure owners<br>who <span class="cyan-dim">can't afford to be wrong.</span>
+<!-- DEPLOYMENTS SLIDE REMOVED -->
+<section style="display:none!important">
+  <div>
+    <div>
     </div>
   </div>
 
@@ -6171,10 +6193,8 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 
 
 
-<!-- ══════════════════════════════════════════════════════════
-     SLIDE 10 — COMPETITIVE LANDSCAPE
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide dark" data-slide="19">
+<!-- COMPETITIVE LANDSCAPE SLIDE REMOVED -->
+<section style="display:none!important" data-slide="19-removed">
   <div class="grid-bg"></div>
   <div class="accent-bar" style="top:80px; height:60px;"></div>
 
@@ -6248,96 +6268,6 @@ if (sessionStorage.getItem('sa_auth') === '1') {
 </section>
 
 
-<!-- ══════════════════════════════════════════════════════════
-     APPENDIX — DEFENSE & UAV (ARTIMUS)
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide dark" data-slide="20" style="background:url('ARTIMUSBGOF.png') center center / cover no-repeat;">
-  <div style="position:absolute; inset:0; background:rgba(13,31,60,0.8); z-index:0;"></div>
-  <div style="position:absolute; top:20px; left:32px; z-index:5; display:flex; align-items:center; gap:12px;">
-    <span style="font-family:'Consolas','Inter',monospace; font-size:11px; font-weight:700; color:#00e5cc; letter-spacing:2px; text-transform:uppercase;">Appendix</span>
-    <span style="font-size:11px; color:rgba(255,255,255,0.2);">|</span>
-    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">ARTIMUS &mdash; Defense &amp; UAV</span>
-  </div>
-  <div class="accent-bar" style="top:80px; height:60px;"></div>
-
-  <div class="slide-inner" style="position:relative; z-index:1;">
-  <style>
-    @keyframes s12-wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      15% { transform: rotate(-1.5deg) translateX(-2px); }
-      30% { transform: rotate(1.2deg) translateX(2px); }
-      45% { transform: rotate(-0.8deg); }
-      55% { transform: rotate(0.5deg) translateX(1px); }
-      70% { transform: rotate(0deg); }
-    }
-    .artimus-case {
-      animation: s12-wiggle 3s ease-in-out infinite;
-      cursor: pointer;
-      transition: filter 0.3s;
-    }
-    .artimus-case:hover {
-      filter: drop-shadow(0 36px 72px rgba(0,0,0,0.7)) drop-shadow(0 12px 24px rgba(0,0,0,0.5)) drop-shadow(0 0 20px rgba(0,212,255,0.5));
-    }
-  </style>
-  <div class="build" data-delay="200" style="display:flex; gap:40px; align-items:flex-start;">
-    <div style="flex:1;">
-      <img src="artimuswhite.png" style="height:70px; width:auto; margin-bottom:6px;">
-      <div class="mono" style="font-size:11px; letter-spacing:2px; color:var(--cyan); text-transform:uppercase; white-space:nowrap;">Arctic Terrain Intelligence via Multi-Sensor Unified Sensing</div>
-      <div class="headline" style="font-size:38px; font-weight:800; margin-top:16px;">
-        Defense-grade sensing. <span class="cyan">Proposed for the Arctic.</span>
-      </div>
-      <div style="font-size:17px; color:rgba(255,255,255,0.7); margin-top:8px; max-width:700px; line-height:1.6;">
-        Arctic terrain can kill a convoy before the enemy does. SmartAuger Technologies and OSU&rsquo;s ElectroScience Laboratory have jointly proposed ARTIMUS to answer the questions warfighters need most &mdash; can my vehicles cross this terrain, is it safe for troops on foot, what&rsquo;s the best route from here to there? If awarded, ARTIMUS delivers a full-stack UAV sensor platform and ML-driven RAG engine that turns raw Arctic terrain data into actionable mobility intelligence &mdash; purpose-built for the warfighter, deployable in minutes.
-      </div>
-    </div>
-    <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; flex:0 0 700px; padding-top:30px;">
-      <img src="ARTIMUS_CASE.png" class="artimus-case" style="height:220px; width:auto; filter:drop-shadow(0 36px 72px rgba(0,0,0,0.7)) drop-shadow(0 12px 24px rgba(0,0,0,0.5));" onclick="openArtimusDemo()">
-      <div class="syne cyan" style="font-size:14px; font-weight:700; letter-spacing:1px; cursor:pointer;" onclick="openArtimusDemo()">Click to Deploy Demo</div>
-    </div>
-  </div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;">
-    <div class="card build" data-delay="500" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
-      <div class="card-accent"></div>
-      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">UAV &amp; RF Hardware</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Proposed hybrid UAV platform selection, payload mechanical engineering, and multi-sensor integration. Our plan converts OSU ElectroScience research into fielded RF hardware &mdash; with civilian commercialization rights retained. Defense funds the R&amp;D; we own the upside across a vast pipeline of commercial markets.</div>
-    </div>
-    <div class="card build" data-delay="700" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
-      <div class="card-accent"></div>
-      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">Data Uplink &amp; Encryption</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Designed for comms-denied, adversarial environments. Data will be encrypted at the edge and synced to cloud when bandwidth allows &mdash; targeting full DOD data and AI model assurance compliance, without sacrificing operational security.</div>
-    </div>
-    <div class="card build" data-delay="900" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
-      <div class="card-accent"></div>
-      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">ATAK &amp; Warfighter Interface</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">One button. The proposed system will enable fully autonomous route pathing, geophysical track assignment, and optimized flight coverage &mdash; delivered as a native ATAK plugin. Complex multi-sensor operations, mission-ready in seconds.</div>
-    </div>
-    <div class="card build" data-delay="1100" style="padding:18px 20px; background:rgba(13,31,60,0.7); backdrop-filter:blur(8px); border-color:var(--mid-blue);">
-      <div class="card-accent"></div>
-      <div class="syne cyan" style="font-weight:700; font-size:19px; padding-left:14px;">Machine Learning &amp; RAG Intelligence</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-top:6px; padding-left:14px; line-height:1.5;">Our proposed fusion engine will combine onboard RGB, GPR, and laser data with NASA ICESat-2, CRREL, NSIDC, Sentinel-2, and ArcticDEM into a single terrain intelligence layer. Vehicle and personnel weight will be factored into every mobility decision. No generic tool comes close to this planned capability.</div>
-    </div>
-  </div>
-
-  <div class="build" data-delay="1300" style="display:flex; align-items:center; justify-content:center; width:100%; margin-top:40px;">
-    <img src="Logosbar.png" style="height:auto; opacity:0.9;">
-  </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
-     APPENDIX — GRAVE SIMULATION DATA
-     ══════════════════════════════════════════════════════════ -->
-<section class="slide dark" data-slide="21" style="padding:0 !important; overflow:hidden;">
-  <div style="position:absolute; top:20px; left:32px; z-index:5; display:flex; align-items:center; gap:12px;">
-    <span style="font-family:'Consolas','Inter',monospace; font-size:11px; font-weight:700; color:#00e5cc; letter-spacing:2px; text-transform:uppercase;">Appendix</span>
-    <span style="font-size:11px; color:rgba(255,255,255,0.2);">|</span>
-    <span style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.5);">GRAVE-SIM-003 &mdash; Advanced Simulation Data</span>
-    <span style="font-size:9px; font-weight:700; color:#ff6b6b; letter-spacing:1px; text-transform:uppercase; background:rgba(255,107,107,0.1); border:1px solid rgba(255,107,107,0.2); border-radius:3px; padding:2px 8px;">Proprietary</span>
-  </div>
-  <iframe src="SIMULATION_RESULTS.html" style="width:100%; height:100%; border:none; position:absolute; inset:0;"></iframe>
-</section>
 
 
 <!-- NAVIGATION BAR -->
@@ -6349,13 +6279,15 @@ if (sessionStorage.getItem('sa_auth') === '1') {
     <span class="nav-sep">&middot;</span>
     <span class="nav-deck">Investment Pitch Deck</span>
   </div>
+  <div class="nav-center">
+    <div class="nav-dots" id="navDots"></div>
+  </div>
   <div class="nav-right">
     <div class="nav-info">
       <span id="slideNum">01</span> / <span id="slideTotal">19</span>
       &nbsp;&middot;&nbsp;
       <span id="slideTitle">Cover</span>
     </div>
-    <div class="nav-dots" id="navDots"></div>
     <div class="nav-arrows">
       <button class="nav-btn" onclick="prevSlide()">&larr;</button>
       <button class="nav-btn" onclick="nextSlide()">&rarr;</button>
