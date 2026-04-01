@@ -763,17 +763,16 @@
 
 <!-- ═══ PASSWORD GATE ═══ -->
 <div id="authGate" style="position:fixed; inset:0; z-index:99999; background:#0A1628; display:flex; align-items:center; justify-content:center;">
-  <!-- Topo pattern background -->
-  <div class="grid-bg" style="opacity:0.07;"></div>
+  <!-- 3D topo dot background (white dots) -->
+  <canvas id="authTopoCanvas" style="position:absolute; inset:0; width:100%; height:100%; z-index:0;"></canvas>
 
-  <div style="position:relative; z-index:2; text-align:center; max-width:420px; width:90%; padding:48px 40px; background:rgba(13,31,60,0.6); border:1px solid #1E3056; border-radius:12px;">
+  <div style="position:relative; z-index:2; text-align:center; max-width:420px; width:90%; padding:48px 40px; background:rgba(10,22,40,0.85); border:1px solid #1E3056; border-radius:12px; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);">
 
     <!-- Logo -->
     <div style="margin-bottom:28px;">
       <img src="SAT.png" alt="SmartAuger Technologies" style="height:40px; opacity:0.95;">
     </div>
 
-    <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:#00D4C8; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px;">SmartAuger Technologies</div>
     <div style="font-family:'Inter',sans-serif; font-size:24px; font-weight:700; color:#F0F4FF; margin-bottom:6px;">Confidential Investor Materials</div>
     <div style="font-family:'Inter',sans-serif; font-size:13px; color:#8899BB; margin-bottom:36px;">Enter the password provided to you to continue.</div>
 
@@ -829,6 +828,72 @@ async function checkAuth() {
 if (sessionStorage.getItem('sa_auth') === '1') {
   document.getElementById('authGate').style.display = 'none';
 }
+
+// 3D topo white dot background for auth gate
+(function(){
+  var gate = document.getElementById('authGate');
+  if (gate.style.display === 'none') return;
+  var c = document.getElementById('authTopoCanvas');
+  if (!c) return;
+  var gl = c.getContext('webgl', { alpha: false, antialias: true });
+  if (!gl) return;
+
+  // Generate simple topo grid
+  var N = 80, pts = [];
+  for (var ix = 0; ix < N; ix++) for (var iz = 0; iz < N; iz++) {
+    var x = (ix / (N-1) - 0.5) * 6;
+    var z = (iz / (N-1) - 0.5) * 6;
+    var y = Math.sin(x * 1.2) * 0.3 + Math.cos(z * 0.9) * 0.25 + Math.sin(x * 0.5 + z * 0.7) * 0.4;
+    pts.push(x, y, z);
+  }
+  var data = new Float32Array(pts);
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+
+  var VS = 'attribute vec3 aPos; uniform float uTime; varying float vA;\n' +
+    'void main() {\n' +
+    '  vec3 p = aPos * 2.5;\n' +
+    '  p.y += sin(aPos.x*2.0+uTime*0.5)*0.15 + cos(aPos.z*1.5-uTime*0.3)*0.1;\n' +
+    '  float bands = mod(aPos.y, 0.12); float cd = abs(bands-0.06);\n' +
+    '  float onC = clamp((0.025-cd)/0.012, 0.0, 1.0);\n' +
+    '  p.y += 2.0;\n' +
+    '  float sa=sin(-0.6), ca=cos(-0.6);\n' +
+    '  float ny=p.z*sa+p.y*ca, nz=p.z*ca-p.y*sa; p.y=ny; p.z=nz;\n' +
+    '  float fov=1.5; gl_Position=vec4(p.x/(-p.z*fov), p.y/(-p.z*fov), 0.0, 1.0);\n' +
+    '  gl_PointSize = 2.0 + onC * 1.5;\n' +
+    '  float r = clamp(1.0-length(aPos.xz)*0.28, 0.0, 1.0);\n' +
+    '  vA = (0.15 + onC*0.35) * r * (0.85+0.15*sin(uTime*2.0+aPos.x*10.0));\n' +
+    '}';
+  var FS = 'precision mediump float; varying float vA;\n' +
+    'void main() {\n' +
+    '  float d=length(gl_PointCoord-0.5); float c=1.0-smoothstep(0.0,0.5,d);\n' +
+    '  float a=c*vA; if(a<0.005) discard;\n' +
+    '  gl_FragColor=vec4(0.9,0.93,0.97, a);\n}\n';
+
+  function mk(s,t){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return sh;}
+  var prog=gl.createProgram();
+  gl.attachShader(prog,mk(VS,gl.VERTEX_SHADER));
+  gl.attachShader(prog,mk(FS,gl.FRAGMENT_SHADER));
+  gl.linkProgram(prog); gl.useProgram(prog);
+  var aP=gl.getAttribLocation(prog,'aPos'); gl.enableVertexAttribArray(aP);
+  gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
+  var uT=gl.getUniformLocation(prog,'uTime');
+  gl.clearColor(0.039,0.086,0.157,1); gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+  var nP=data.length/3;
+
+  function draw(t){
+    if(gate.style.display==='none') return;
+    c.width=c.clientWidth*devicePixelRatio; c.height=c.clientHeight*devicePixelRatio;
+    gl.viewport(0,0,c.width,c.height);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(uT,t*0.001);
+    gl.drawArrays(gl.POINTS,0,nP);
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
 </script>
 
 <!-- Mobile blocker -->
